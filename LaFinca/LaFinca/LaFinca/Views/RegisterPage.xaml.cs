@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LaFinca.Services;
+using LaFinca.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +14,28 @@ namespace LaFinca.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RegisterPage : ContentPage
     {
+        public ItemRestService service = new ItemRestService();
         public RegisterPage()
         {
             InitializeComponent();
+
+            GetData();
+
+        }
+
+        private async void GetData()
+        {
+            List<Models.MenuItem> items = await service.RefreshData();
+
+            if(items != null)
+            {
+                foreach (Models.MenuItem item in items)
+                {
+                    string name = item.ItemName;
+                }
+            }
+            
+
         }
 
         private void RegisterClicked(object sender, EventArgs e)
