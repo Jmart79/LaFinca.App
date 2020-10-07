@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace LaFinca.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TabbedPage1 : TabbedPage
+    public partial class SearchPagexaml : TabbedPage
     {
-        public TabbedPage1()
+        public SearchPagexaml()
         {
             InitializeComponent();
         }

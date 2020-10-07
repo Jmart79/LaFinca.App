@@ -14,7 +14,7 @@ namespace LaFinca
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new NavigationPage(new HomePage());
+            MainPage = new NavigationPage(new NewMenuItemPage());
         }
 
         protected override void OnStart()
