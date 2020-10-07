@@ -3,27 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LaFinca.Models;
-using LaFinca.ViewModels;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace LaFinca.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class TabbedPage1 : TabbedPage
     {
-        IUser user;
-        public LoginPage()
+        public TabbedPage1()
         {
-            user = new IUser();
             InitializeComponent();
-            this.BindingContext = user;
-        }
-
-        private void LoginClicked(object sender, EventArgs e)
-        {
-
         }
     }
 }

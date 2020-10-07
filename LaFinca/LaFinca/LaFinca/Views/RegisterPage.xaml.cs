@@ -15,11 +15,13 @@ namespace LaFinca.Views
     public partial class RegisterPage : ContentPage
     {
         public ItemRestService service = new ItemRestService();
+        public IUser user;
         public RegisterPage()
         {
+            user = new IUser();
             InitializeComponent();
-
-            GetData();
+            this.BindingContext = user;
+          //  GetData();
 
         }
 
@@ -40,7 +42,6 @@ namespace LaFinca.Views
 
         private void RegisterClicked(object sender, EventArgs e)
         {
-
         }
     }
 }
