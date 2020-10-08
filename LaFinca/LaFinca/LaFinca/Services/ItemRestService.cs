@@ -76,8 +76,8 @@ namespace LaFinca.Services
             Uri uri = new Uri(string.Format("https://10.0.2.2:5001/MenuItems/ViewAll"));
 
          //   client.BaseAddress = new Uri("http://localhost:49836");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+           // client.DefaultRequestHeaders.Accept.Clear();
+            //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             HttpResponseMessage response = await client.GetAsync(uri);
 
