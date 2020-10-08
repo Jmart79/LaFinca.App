@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,7 +34,7 @@ namespace LaFinca.Services
         {
             if(GetDataById(obj.ItemName) == null)
             {
-                Uri uri = new Uri(string.Format("/MenuItems/Create"));
+                Uri uri = new Uri(string.Format("https://10.0.2.2:5001/MenuItems/Create"));
                 string json = JsonConvert.SerializeObject(obj);
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -72,7 +73,11 @@ namespace LaFinca.Services
         public async Task<List<MenuItem>> RefreshData()
         {
             List<MenuItem> menuItems = null;
-            Uri uri = new Uri(string.Format("https://10.0.2.2:44377/MenuItems/ViewAll"));
+            Uri uri = new Uri(string.Format("https://10.0.2.2:5001/MenuItems/ViewAll"));
+
+         //   client.BaseAddress = new Uri("http://localhost:49836");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             HttpResponseMessage response = await client.GetAsync(uri);
 

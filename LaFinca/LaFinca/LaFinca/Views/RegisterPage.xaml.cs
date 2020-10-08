@@ -21,7 +21,7 @@ namespace LaFinca.Views
             user = new IUser();
             InitializeComponent();
             this.BindingContext = user;
-          //  GetData();
+            GetData();
 
         }
 

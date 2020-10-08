@@ -28,5 +28,10 @@ namespace LaFinca.Views
         {
 
         }
+
+        private void IsHouseFavoriteSwitch1_Toggled(object sender, ToggledEventArgs e)
+        {
+
+        }
     }
 }
