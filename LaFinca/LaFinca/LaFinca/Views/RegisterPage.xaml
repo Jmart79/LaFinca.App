@@ -4,11 +4,11 @@
              x:Class="LaFinca.Views.RegisterPage">
     <ContentPage.Content>
         <StackLayout>
-            <Entry Placeholder="Name"/>
-            <Entry Placeholder="Username"/>
-            <Entry Placeholder="Email"/>
-            <Entry Placeholder="Password"/>
-            <Entry Placeholder="Passowrd"/>
+            <Entry Text="{Binding name}" Placeholder="Name"/>
+            <Entry Text="{Binding username}}" Placeholder="Username"/>
+            <Entry Text="{Binding email}" Placeholder="Email"/>
+            <Entry Text="{Binding password}" IsPassword="True" Placeholder="Password"/>
+            <Entry Text="{Binding password}" IsPassword="True" Placeholder="Password"/>
             <Button Text="Register" Clicked="RegisterClicked"/>
         </StackLayout>
     </ContentPage.Content>

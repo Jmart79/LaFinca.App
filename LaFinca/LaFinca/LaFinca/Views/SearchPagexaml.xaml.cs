@@ -10,16 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace LaFinca.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MenuPage : ContentPage
+    public partial class SearchPagexaml : TabbedPage
     {
-        public MenuPage()
+        public SearchPagexaml()
         {
             InitializeComponent();
-        }
-
-        public MenuPage(List<Models.MenuItem> items)
-        {
-
         }
     }
 }
