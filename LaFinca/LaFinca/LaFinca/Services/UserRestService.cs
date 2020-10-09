@@ -64,11 +64,50 @@ namespace LaFinca.Services
             }
 
             return user;
-
         }
 
-        
-        
+        public async Task<List<IUser>> AddData(IUser user)
+        {
+            if(GetDataById(user.username) == null)
+            {
+                Uri uri = new Uri(string.Format("https://10.0.2.2:5001/Users/Create"));
+                string json = JsonConvert.SerializeObject(user);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = null;
+
+                response = await client.PostAsync(uri, content);
+            }
+            return await RefreshData();
+        }
+
+        public async Task<List<IUser>> UpdateData(IUser user)
+        {
+            if (GetDataById(user.username) != null)
+            {
+                Uri uri = new Uri(string.Format("https://10.0.2.2:5001/Users/Create"));
+                string json = JsonConvert.SerializeObject(user);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                 
+                HttpResponseMessage response = null;
+
+                response = await client.PutAsync(uri, content);
+            }
+            return await RefreshData();
+        }
+
+        public async Task<List<IUser>> Delete(string username)
+        {
+            if (GetDataById(username) != null)
+            {
+                Uri uri = new Uri(string.Format($"https://10.0.2.2:5001/Users/Create/{username}"));
+
+                HttpResponseMessage resposne = await client.DeleteAsync(uri);
+
+            }
+
+            return await RefreshData();
+        }
 
 
     }

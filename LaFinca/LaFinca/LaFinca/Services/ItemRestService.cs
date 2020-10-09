@@ -48,7 +48,7 @@ namespace LaFinca.Services
 
         public async Task<List<MenuItem>> DeleteData(string id)
         {
-            Uri uri = new Uri(string.Format($"MenuItems/Delete/{id}"));
+            Uri uri = new Uri(string.Format($"https://10.0.2.2:5001/MenuItems/Delete/{id}"));
             HttpResponseMessage response = await client.DeleteAsync(uri);
 
             return await RefreshData();
