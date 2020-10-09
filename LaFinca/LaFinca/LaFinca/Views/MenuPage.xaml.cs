@@ -16,5 +16,10 @@ namespace LaFinca.Views
         {
             InitializeComponent();
         }
+
+        public MenuPage(List<Models.MenuItem> items)
+        {
+
+        }
     }
 }

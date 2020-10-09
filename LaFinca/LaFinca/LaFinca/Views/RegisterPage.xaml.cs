@@ -14,34 +14,44 @@ namespace LaFinca.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RegisterPage : ContentPage
     {
-        public ItemRestService service = new ItemRestService();
+        private List<IUser> users;
         public IUser user;
         public RegisterPage()
         {
             user = new IUser();
             InitializeComponent();
             this.BindingContext = user;
-            GetData();
-
-        }
-
-        private async void GetData()
-        {
-            List<Models.MenuItem> items = await service.RefreshData();
-
-            if(items != null)
-            {
-                foreach (Models.MenuItem item in items)
-                {
-                    string name = item.ItemName;
-                }
-            }
+            this.users = (List<IUser>)Application.Current.Properties["Users"];
             
 
         }
 
-        private void RegisterClicked(object sender, EventArgs e)
+        public RegisterPage(List<IUser> users, List<Models.MenuItem> items)
         {
+            user = new IUser();
+            this.users = users;
+            InitializeComponent();
+        }
+
+     
+
+        private async void RegisterClicked(object sender, EventArgs e)
+        {
+            IUser foundUser = users.FirstOrDefault(child => child.username == user.username);
+
+            if(foundUser == null)
+            {
+                UserRestService userService = new UserRestService();
+                Application.Current.Properties["Users"] = await userService.AddData(user);
+
+                await Navigation.PushAsync(new LoginPage());
+
+            }
+            else
+            {
+                
+            }
+
         }
     }
 }

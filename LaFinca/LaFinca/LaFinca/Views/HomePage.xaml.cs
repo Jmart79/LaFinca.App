@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LaFinca.Models;
 using LaFinca.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,10 +13,21 @@ namespace LaFinca.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomePage : ContentPage
     {
+        public List<IUser> _users;
+        public List<Models.MenuItem> _items;
+
         public HomePage()
         {
             InitializeComponent();
+            
         }
+
+        public HomePage(List<IUser> users, List<Models.MenuItem> items)
+        {
+            this._users = users;
+            this._items = items;
+        }
+
 
         async void OnLoginClicked(object sender, EventArgs e)
         {

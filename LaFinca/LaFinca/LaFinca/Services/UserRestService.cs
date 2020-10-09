@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LaFinca.Services
 {
-    class UserRestService
+    public class UserRestService
     {
         protected HttpClient client;
 
@@ -36,8 +36,8 @@ namespace LaFinca.Services
 
             Uri uri = new Uri(string.Format("https://10.0.2.2:5001/Users/ViewAll"));
 
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+          //  client.DefaultRequestHeaders.Accept.Clear();
+          //  client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             HttpResponseMessage response = await client.GetAsync(uri);
 
@@ -68,9 +68,11 @@ namespace LaFinca.Services
 
         public async Task<List<IUser>> AddData(IUser user)
         {
-            if(GetDataById(user.username) == null)
+            bool doesUserExist = await GetDataById(user.username) != null;
+            IUser whateer = await GetDataById(user.username);
+            if (!doesUserExist)
             {
-                Uri uri = new Uri(string.Format("https://10.0.2.2:5001/Users/Create"));
+                Uri uri = new Uri(string.Format($"https://10.0.2.2:5001/Users/Create?username={user.username}&name={user.name}&password={user.password}&role={user.role}&email={user.email}"));
                 string json = JsonConvert.SerializeObject(user);
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
