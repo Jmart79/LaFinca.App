@@ -22,13 +22,6 @@ namespace LaFinca.Views
             
         }
 
-        public HomePage(List<IUser> users, List<Models.MenuItem> items)
-        {
-            this._users = users;
-            this._items = items;
-        }
-
-
         async void OnLoginClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new LoginPage());

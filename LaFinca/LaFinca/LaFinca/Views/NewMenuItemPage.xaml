@@ -31,7 +31,7 @@
             <Entry Text="{Binding Cost}" Placeholder="Cost"/>
             <Entry Text="{Binding Description}" Placeholder="Description"/>
             <Label>Is House Favorite:</Label>
-            <Switch VerticalOptions="Center" x:Name="IsHouseFavoriteSwitch1" HorizontalOptions="Center" Toggled="Switch_Toggled">
+            <Switch VerticalOptions="Center" x:Name="IsHouseFavoriteSwitch1" HorizontalOptions="Center" >
                 
             </Switch>
             <Button Clicked="CreateClicked" Text="Create"/> 

@@ -22,8 +22,6 @@ namespace LaFinca.Views
             InitializeComponent();
             this.BindingContext = user;
             this.users = (List<IUser>)Application.Current.Properties["Users"];
-            
-
         }
 
         public RegisterPage(List<IUser> users, List<Models.MenuItem> items)
@@ -31,9 +29,7 @@ namespace LaFinca.Views
             user = new IUser();
             this.users = users;
             InitializeComponent();
-        }
-
-     
+        }     
 
         private async void RegisterClicked(object sender, EventArgs e)
         {

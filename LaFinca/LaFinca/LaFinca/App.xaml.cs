@@ -17,8 +17,11 @@ namespace LaFinca
         {
             InitializeComponent();
 
+            UserRestService userService = new UserRestService();
+            ItemRestService itemService = new ItemRestService();
 
-            MainPage = new NavigationPage(CreateHomePage());
+            SetData(userService, itemService);
+            MainPage = new NavigationPage(new NewMenuItemPage());
         }
 
         private  HomePage CreateHomePage()
@@ -27,6 +30,8 @@ namespace LaFinca
             ItemRestService itemService = new ItemRestService();
             
                 SetData(userService, itemService);
+
+            List<Models.MenuItem> items = Application.Current.Properties["Items"] as List<Models.MenuItem>;
 
             return new HomePage();
 
