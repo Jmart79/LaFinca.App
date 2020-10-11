@@ -17,7 +17,11 @@ namespace LaFinca
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(CreateHomePage());
+            UserRestService userService = new UserRestService();
+            ItemRestService itemService = new ItemRestService();
+
+            SetData(userService, itemService);
+            MainPage = new NavigationPage(new NewMenuItemPage());
         }
 
         private  HomePage CreateHomePage()
