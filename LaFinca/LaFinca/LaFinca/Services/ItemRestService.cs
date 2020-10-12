@@ -32,9 +32,11 @@ namespace LaFinca.Services
 
         public async Task<List<MenuItem>> AddData(MenuItem obj)
         {
-            if(GetDataById(obj.ItemName) == null)
+            bool doesItemExist = await GetDataById(obj.ItemName) != null;
+
+            if(!doesItemExist)
             {
-                Uri uri = new Uri(string.Format("https://10.0.2.2:5001/MenuItems/Create"));
+                Uri uri = new Uri(string.Format($"https://10.0.2.2:5001/MenuItems/Create?ItemName={obj.ItemName}&Category={obj.Category}&Description={obj.Description}&Cost={obj.Cost}"));
                 string json = JsonConvert.SerializeObject(obj);
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -57,7 +59,7 @@ namespace LaFinca.Services
         public async Task<MenuItem> GetDataById(string id)
         {
             MenuItem item = null;
-            Uri uri = new Uri(string.Format($"/items/viewAll/{id}"));
+            Uri uri = new Uri(string.Format($"https://10.0.2.2:5001/MenuItems/GetByName/{id}"));
 
             HttpResponseMessage response = await client.GetAsync(uri);
 

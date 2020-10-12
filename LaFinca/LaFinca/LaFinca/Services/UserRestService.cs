@@ -69,7 +69,6 @@ namespace LaFinca.Services
         public async Task<List<IUser>> AddData(IUser user)
         {
             bool doesUserExist = await GetDataById(user.username) != null;
-            IUser whateer = await GetDataById(user.username);
             if (!doesUserExist)
             {
                 Uri uri = new Uri(string.Format($"https://10.0.2.2:5001/Users/Create?username={user.username}&name={user.name}&password={user.password}&role={user.role}&email={user.email}"));
@@ -102,7 +101,7 @@ namespace LaFinca.Services
         {
             if (GetDataById(username) != null)
             {
-                Uri uri = new Uri(string.Format($"https://10.0.2.2:5001/Users/Create/{username}"));
+                Uri uri = new Uri(string.Format($"https://10.0.2.2:5001/Users/Delete/{username}"));
 
                 HttpResponseMessage resposne = await client.DeleteAsync(uri);
 
