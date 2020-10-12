@@ -36,7 +36,7 @@ namespace LaFinca.Views
             {
                 if(foundUser.password == user.password)
                 {
-                    await Navigation.PushAsync(new MenuPage());
+                    await Navigation.PushAsync(new DeleteUser());
                 }
             }
             else

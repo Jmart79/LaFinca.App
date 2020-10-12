@@ -21,7 +21,7 @@ namespace LaFinca
             ItemRestService itemService = new ItemRestService();
 
             SetData(userService, itemService);
-            MainPage = new NavigationPage(new HomePage());
+            MainPage = new NavigationPage(new UpdateMenuItemPage());
         }
 
        

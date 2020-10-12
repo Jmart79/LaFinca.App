@@ -101,7 +101,7 @@ namespace LaFinca.Services
         {
             if (GetDataById(username) != null)
             {
-                Uri uri = new Uri(string.Format($"https://10.0.2.2:5001/Users/Create/{username}"));
+                Uri uri = new Uri(string.Format($"https://10.0.2.2:5001/Users/Delete/{username}"));
 
                 HttpResponseMessage resposne = await client.DeleteAsync(uri);
 

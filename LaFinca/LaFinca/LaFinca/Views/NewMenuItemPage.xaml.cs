@@ -38,8 +38,8 @@ namespace LaFinca.Views
             {
                 Application.Current.Properties["Items"] = await service.AddData(item);
             }
-            
 
+            await Navigation.PushAsync(new DeleteMenuItem());
         }
 
         
