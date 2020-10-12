@@ -21,21 +21,10 @@ namespace LaFinca
             ItemRestService itemService = new ItemRestService();
 
             SetData(userService, itemService);
-            MainPage = new NavigationPage(new NewMenuItemPage());
+            MainPage = new NavigationPage(new HomePage())  b  ;
         }
 
-        private  HomePage CreateHomePage()
-        {
-            UserRestService userService = new UserRestService();
-            ItemRestService itemService = new ItemRestService();
-            
-                SetData(userService, itemService);
-
-            List<Models.MenuItem> items = Application.Current.Properties["Items"] as List<Models.MenuItem>;
-
-            return new HomePage();
-
-        }
+       
 
         private async void SetData(UserRestService userservice, ItemRestService itemService)
         {
