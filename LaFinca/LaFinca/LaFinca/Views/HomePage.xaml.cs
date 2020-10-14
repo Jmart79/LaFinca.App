@@ -34,7 +34,7 @@ namespace LaFinca.Views
 
         async void OnContinueClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MenuPage());
+            await Navigation.PushAsync(new UpdateUserPage());
         }
     }
 }

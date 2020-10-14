@@ -21,6 +21,7 @@ namespace LaFinca
             ItemRestService itemService = new ItemRestService();
 
             SetData(userService, itemService);
+            List<IUser> users = Application.Current.Properties["Users"] as List<IUser>;
             MainPage = new NavigationPage(new HomePage());
         }
 
