@@ -6,16 +6,7 @@
         <StackLayout>
             <Entry x:Name="ItemToUpdate" Placeholder="Item Name" Completed="ItemToUpdate_Completed"/>
 
-            <Picker Title="Data to Update" x:Name="VariableToUpdatePicker" SelectedIndexChanged="Picker_SelectedIndexChanged">
-                <Picker.Items>
-                    <x:String>Category</x:String>
-                    <x:String>Description</x:String>
-                    <x:String>Cost</x:String>
-                    <x:String>IsAvailable</x:String>
-                    <x:String>IsHouseFavorite</x:String>
-                    <x:String>Item Name</x:String>
-                </Picker.Items>
-            </Picker>
+          
             
             <Button Clicked="UpdateClicked" Text="Update"/>
         </StackLayout>
