@@ -29,21 +29,15 @@ namespace LaFinca
 
         private async void SetData(UserRestService userservice, ItemRestService itemService)
         {
-            List<IUser> usersTemp = await GetUsers(userservice);
-            List<Models.MenuItem> itemsTemp = await GetItems(itemService);
+            List<IUser> usersTemp = await userservice.RefreshData();
+            List<Models.MenuItem> itemsTemp = await itemService.RefreshData();
 
             Application.Current.Properties["Users"] = usersTemp;
             Application.Current.Properties["Items"] = itemsTemp;
         }
 
-        private async Task<List<IUser>> GetUsers(UserRestService service)
-        {
-            return await service.RefreshData();
-        }
-
-        private async Task<List<Models.MenuItem>> GetItems(ItemRestService swervice) { return await swervice.RefreshData(); }
-    
-        protected async override void OnStart()
+      
+        protected  override void OnStart()
         {
             
         }

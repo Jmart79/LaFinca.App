@@ -36,10 +36,11 @@ namespace LaFinca.Services
 
             Uri uri = new Uri(string.Format("https://10.0.2.2:5001/Users/ViewAll"));
 
-          //  client.DefaultRequestHeaders.Accept.Clear();
-          //  client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            //client.DefaultRequestHeaders.Accept.Clear();
+            //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            HttpResponseMessage response = await client.GetAsync(uri);
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, uri);
+            HttpResponseMessage response = client.SendAsync(request).GetAwaiter().GetResult();
 
             if (response.IsSuccessStatusCode)
             {
