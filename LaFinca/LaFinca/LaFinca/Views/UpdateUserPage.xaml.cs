@@ -1,4 +1,5 @@
 ﻿using LaFinca.Models;
+using LaFinca.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,9 +30,16 @@ namespace LaFinca.Views
             this.BindingContext = UserToUpdate;
         }
 
-        private void UpdateClicked(object sender, EventArgs e)
+        private async void UpdateClicked(object sender, EventArgs e)
         {
+            UserRestService service = new UserRestService();
+            await service.UpdateData(UserToUpdate);
+        }
 
+        private void Picker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selected = e.ToString();
+            string wtvr = sender.ToString();
         }
     }
 }

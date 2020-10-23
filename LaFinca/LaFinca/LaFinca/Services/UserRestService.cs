@@ -87,7 +87,7 @@ namespace LaFinca.Services
         {
             if (GetDataById(user.username) != null)
             {
-                Uri uri = new Uri(string.Format("https://10.0.2.2:5001/Users/Create"));
+                Uri uri = new Uri(string.Format($"https://10.0.2.2:5001/Users/Update?username={user.username}&name={user.name}&password={user.password}&role={user.role}&email={user.email}"));
                 string json = JsonConvert.SerializeObject(user);
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
                  
