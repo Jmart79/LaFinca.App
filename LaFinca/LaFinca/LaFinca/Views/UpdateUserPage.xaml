@@ -12,7 +12,7 @@
             <Entry Text="{Binding password}" IsPassword="True" Placeholder="Password"/>
             <Entry Text="{Binding password}" IsPassword="True" Placeholder="Password"/>
             <Label>Role</Label>
-            <Picker SelectedItem="{Binding Role}" SelectedIndexChanged="Picker_SelectedIndexChanged">
+            <Picker SelectedItem="{Binding Role}" x:Name="UpdateRolePicker" SelectedIndexChanged="Picker_SelectedIndexChanged">
                 <Picker.Items>
                     <x:String>Customer</x:String>
                     <x:String>Management</x:String>

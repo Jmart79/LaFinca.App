@@ -19,6 +19,16 @@ namespace LaFinca.Views
         public UpdateUserPage()
         {
             InitializeComponent();
+            UpdateRolePicker.IsVisible = false;
+        }
+
+        public UpdateUserPage(bool IsManager)
+        {
+            InitializeComponent();
+            if (IsManager)
+            {
+                UpdateRolePicker.IsVisible = true;
+            }
         }
 
         private void UsernameInputed(object sender, EventArgs e)
