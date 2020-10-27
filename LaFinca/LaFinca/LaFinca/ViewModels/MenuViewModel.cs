@@ -50,6 +50,11 @@ namespace LaFinca.ViewModels
             SelectedCategory = newCategory;
         }
 
+        public string GetCategory()
+        {
+            return SelectedCategory;
+        }
+
         public List<CategoryCell> GenerateCells()
         {
             List<CategoryCell> cells = new List<CategoryCell>();
@@ -75,7 +80,8 @@ namespace LaFinca.ViewModels
         public void CategorySelected()
         {
             //TODO: navigate to to the CategoryDetail page with appropriate data being passed through
-            Navigation.PushAsync(new MenuCategoryDetailPage(SelectedCategory));
+            
+           // Navigation.PushAsync(new MenuCategoryDetailPage(SelectedCategory));
         }
     }  
  
@@ -83,6 +89,12 @@ namespace LaFinca.ViewModels
     {
         private MenuViewModel _viewModel;
         private readonly string _categoryName;
+
+        public CategoryCell()
+        {
+
+        }
+
         public CategoryCell(string categoryName, MenuViewModel viewModel) 
         {
             _viewModel = viewModel;

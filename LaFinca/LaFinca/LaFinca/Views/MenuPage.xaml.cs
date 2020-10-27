@@ -18,13 +18,9 @@ namespace LaFinca.Views
         public MenuPage()
         {
             _viewModel = new MenuViewModel();
-            InitializeComponent();
             Title = "Category Selection";
-            Content = new StackLayout
-            {
-                Margin = new Thickness(20),
-                Children = { GenerateScrollView() }
-            }; 
+            InitializeComponent();
+            
          }
 
         public MenuPage(List<Models.MenuItem> items)
@@ -32,22 +28,11 @@ namespace LaFinca.Views
             _viewModel = new MenuViewModel();
         }
 
-        
-
-        private ScrollView GenerateScrollView()
+        async
+        private void CategoryClicked(object sender, EventArgs e)
         {
-            ScrollView scrollView = new ScrollView
-            {
-                VerticleOptions = LayoutOptions.FillAndExpand,
-                Content = new StackLayout
-                {
-                    Children = _viewModel.GenerateCells(),
-                },
-            };
-
-            return scrollView;
+            string category = (sender as Button).Text.ToString();
+           await Navigation.PushAsync(new MenuCategoryDetailPage(category));
         }
-
-       
     }
 }

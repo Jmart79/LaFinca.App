@@ -12,24 +12,18 @@ namespace LaFinca.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MenuCategoryDetailPage : ContentPage
     {
-        private readonly string _category { get; }
+        private  string _category { get; }
         public MenuCategoryDetailPage()
         {
             _category = "Pancakes";
-            
-        }
-
-        public MenuCategoryDetailPage(string Category)
-        {
-            _category = Category;
+            BindingContext = _category;
             InitializeComponent();
+
         }
 
-        private Button GenerateButton()
+        public MenuCategoryDetailPage(string category)
         {
-            Button btn = new Button();
-            btn.Text = _category;
-            return btn;
+            _category = category;
         }
     }
 }

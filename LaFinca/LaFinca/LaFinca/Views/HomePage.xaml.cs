@@ -24,16 +24,18 @@ namespace LaFinca.Views
 
         async void OnLoginClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new UpdateMenuItemPage());
+            await Navigation.PushAsync(new LoginPage());
         }
 
         async void OnRegisterClicked(object sender, EventArgs e)
         {
+
             await Navigation.PushAsync(new RegisterPage());
         }
 
         async void OnContinueClicked(object sender, EventArgs e)
         {
+            NavigationPage temp = new NavigationPage();
             await Navigation.PushAsync(new MenuPage());
         }
     }
