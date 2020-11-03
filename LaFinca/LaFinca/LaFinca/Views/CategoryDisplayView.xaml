@@ -19,8 +19,8 @@
           -->
             <Label Text="{Binding Cost}"></Label>
             <Label Text="{Binding Description}"></Label>
-            <Button Clicked="Button_Clicked"></Button>
-            <Button Clicked="Button_Clicked_1"></Button>
-      </StackLayout>
+            <Button Clicked="Button_Clicked" Text="Order"/>
+            <Button Clicked="Button_Clicked_1" Text="Favorite"/>
+        </StackLayout>
   </ContentView.Content>
 </ContentView>

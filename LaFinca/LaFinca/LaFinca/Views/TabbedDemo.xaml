@@ -5,17 +5,17 @@
             NavigationPage.HasNavigationBar="False"
             >
   <!--Pages can be added as references or inline-->
-    <NavigationPage Title="Order" IconImageSource="CartIcon.png">
+    <NavigationPage Title="Order" IconImageSource="CartIcon.png" NavigationPage.HasNavigationBar="False">
         <x:Arguments>
             <local:OrderPage/>            
         </x:Arguments>        
     </NavigationPage>
-    <NavigationPage Title="Menu" IconImageSource="MenuIcon.png">
+    <NavigationPage Title="Menu" IconImageSource="MenuIcon.png" NavigationPage.HasNavigationBar="False">
         <x:Arguments>
-            <local:MenuPage/>
+            <local:MenuCategoryDetailPage/>
         </x:Arguments>
     </NavigationPage>
-    <NavigationPage Title="Settings" IconImageSource="SettingsIcon.png">
+    <NavigationPage Title="Settings" IconImageSource="SettingsIcon.png" NavigationPage.HasNavigationBar="False">
         <x:Arguments>
             <local:UpdateUserPage/>
         </x:Arguments>

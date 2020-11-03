@@ -18,20 +18,22 @@ namespace LaFinca.ViewModels
         {
             this.category = "New Bruncherias";
             this.CategoryItems = GetItems();
-            GenerateCategoryDisplayView(GetNextItem());
             this._itemIndex = 0;
+            GenerateCategoryDisplayView(CategoryItems.ElementAt(_itemIndex));
         }
         public MenuCategoryViewModel(string Category)
         {
             this.category = Category;
             this.CategoryItems = GetItems();
-            GenerateCategoryDisplayView(GetNextItem());
             this._itemIndex = 0;
+            GenerateCategoryDisplayView(CategoryItems.ElementAt(_itemIndex));
         }
 
         public void SetItems()
         {
             CategoryItems = GetItems();
+            _itemIndex = 0;
+            GenerateCategoryDisplayView(CategoryItems.ElementAt(_itemIndex));
         }
 
         public List<Models.MenuItem> GetItems()
@@ -44,30 +46,38 @@ namespace LaFinca.ViewModels
         public Models.MenuItem GetNextItem()
         {
             Models.MenuItem item;
-            if (CategoryItems.Count <=  1)
+            int count = CategoryItems.Count;
+
+            if (_itemIndex == CategoryItems.Count) 
+            {
+                _itemIndex = 0;
+                item = CategoryItems.ElementAt(_itemIndex);
+            } else if ( CategoryItems.Count <= 1)
             {
                 item = CategoryItems.ElementAt(_itemIndex);
             }
             else
             {
-                item = CategoryItems.ElementAt(++_itemIndex);
-            }
-            
+                item = CategoryItems.ElementAt(_itemIndex++);
+            }             
             GenerateCategoryDisplayView(item);
             return item;
         }
         public Models.MenuItem GetPreviousItem()
         {
             Models.MenuItem item;
-            if(_itemIndex <=1)
+            
+            if (_itemIndex < 0)
             {
-
-                 item = CategoryItems.ElementAt(_itemIndex);
+                _itemIndex = CategoryItems.Count-1;
+                item = CategoryItems.ElementAt(_itemIndex);
+            }else if(_itemIndex == 0)
+            {
+                item = CategoryItems.ElementAt(_itemIndex--);
             }
             else
             {
-
-                 item = CategoryItems.ElementAt(--_itemIndex);
+                 item = CategoryItems.ElementAt(_itemIndex--);
             }
             GenerateCategoryDisplayView(item);
             return item;

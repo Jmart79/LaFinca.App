@@ -60,21 +60,12 @@ namespace LaFinca.Views
             }
         }
 
-        private void CategorySelectionPicker_SelectedIndexChanged(object sender, SelectedItemChangedEventArgs e)
-        {
-            string category = e.SelectedItem as string;
-
-            _viewModel.category = category;
-            _viewModel.CurrentItem.BindingContext = _viewModel.GetNextItem();
-        }
 
         private void CategorySelectionPicker_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             string category = CategorySelectionPicker.SelectedItem as string;
             _viewModel.category = category;
             _viewModel.SetItems();
-            Models.MenuItem item = _viewModel.GetNextItem();
-            _viewModel.GenerateCategoryDisplayView(item);
             MenuItemDispalyView.Content = _viewModel.CurrentItem;
         }
     }
