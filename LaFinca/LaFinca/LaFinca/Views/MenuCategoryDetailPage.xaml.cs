@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LaFinca.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,10 +14,14 @@ namespace LaFinca.Views
     public partial class MenuCategoryDetailPage : ContentPage
     {
         private  string _category { get; }
+        private MenuCategoryViewModel _viewModel { get; set; }
         public MenuCategoryDetailPage()
         {
             _category = "Pancakes";
-            BindingContext = _category;
+            _viewModel = new MenuCategoryViewModel(_category);
+            BindingContext = _viewModel;
+            //CategoryDisplayView categoryDisplayView = _viewModel.CurrentItem;
+            //this.CategoryDisplayStackLayout.Children.Add(_viewModel.CurrentItem) ;
             InitializeComponent();
 
         }
@@ -24,6 +29,53 @@ namespace LaFinca.Views
         public MenuCategoryDetailPage(string category)
         {
             _category = category;
+            _viewModel = new MenuCategoryViewModel(_category);
+            BindingContext = _viewModel;
+            this.CategoryDisplayStackLayout.Children.Add(_viewModel.CurrentItem);
+            InitializeComponent();
+        }
+
+        public void SetCategoryDisplayView()
+        {
+        }
+
+        private void SwipeGestureRecognizer_Swiped(object sender, SwipedEventArgs e)
+        {
+            SwipeDirection swipeDirection = e.Direction;
+
+            switch (swipeDirection)
+            {
+                case SwipeDirection.Left:
+                    Models.MenuItem nextitem = _viewModel.GetNextItem();
+                    _viewModel.GenerateCategoryDisplayView(nextitem);
+                    MenuItemDispalyView.Content = _viewModel.CurrentItem;
+
+                    //           Content = new StackLayout { Children = _viewModel.GetNextMenuItemDetailPage() };
+                    break;
+                case SwipeDirection.Right:
+                    Models.MenuItem previousitem = _viewModel.GetPreviousItem();
+                    _viewModel.GenerateCategoryDisplayView(previousitem);
+                    MenuItemDispalyView.Content = _viewModel.CurrentItem;
+                    break;
+            }
+        }
+
+        private void CategorySelectionPicker_SelectedIndexChanged(object sender, SelectedItemChangedEventArgs e)
+        {
+            string category = e.SelectedItem as string;
+
+            _viewModel.category = category;
+            _viewModel.CurrentItem.BindingContext = _viewModel.GetNextItem();
+        }
+
+        private void CategorySelectionPicker_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            string category = CategorySelectionPicker.SelectedItem as string;
+            _viewModel.category = category;
+            _viewModel.SetItems();
+            Models.MenuItem item = _viewModel.GetNextItem();
+            _viewModel.GenerateCategoryDisplayView(item);
+            MenuItemDispalyView.Content = _viewModel.CurrentItem;
         }
     }
 }

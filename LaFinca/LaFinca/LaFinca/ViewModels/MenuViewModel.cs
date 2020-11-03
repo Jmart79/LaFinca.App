@@ -83,8 +83,24 @@ namespace LaFinca.ViewModels
             
            // Navigation.PushAsync(new MenuCategoryDetailPage(SelectedCategory));
         }
+        
+        public List<MenuItemDetailPage> GenerateDetailPages()
+        {
+            List<Models.MenuItem> sortedItems = GetItems();
+            List<MenuItemDetailPage> detailPages = new List<MenuItemDetailPage>();
+            MenuItemDetailPage detailPage;
+            foreach(Models.MenuItem item in sortedItems)
+            {
+                detailPage = new MenuItemDetailPage();
+                detailPages.Add(detailPage);
+            }
+            return detailPages;
+        }
+
+      
+
     }  
- 
+
     public class CategoryCell : ViewCell
     {
         private MenuViewModel _viewModel;

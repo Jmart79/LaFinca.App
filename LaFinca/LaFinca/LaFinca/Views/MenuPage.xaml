@@ -1,55 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
     <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:LaFinca.ViewModels"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:LaFinca.ViewModels" xmlns:views="clr-namespace:LaFinca.Views"
              x:Class="LaFinca.Views.MenuPage" Title="Category Selection">
     <StackLayout>
         <ScrollView>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Button Text="Family Platters" WidthRequest="250" Clicked="CategoryClicked" VerticalOptions="Center" Grid.Row="0" Grid.Column="0"  HorizontalOptions="Center"/>
-
-                <Button Text="Starters" Clicked="CategoryClicked" WidthRequest="250" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center"/>
-                <Button Text="Pan" Clicked="CategoryClicked" WidthRequest="250" VerticalOptions="Center" Grid.Row="2" Grid.Column="0" HorizontalOptions="Center"/>
-                <Button Text="Omelet" Clicked="CategoryClicked" WidthRequest="250" VerticalOptions="Center" Grid.Row="3" Grid.Column="0" HorizontalOptions="Center"/>
-                <Button Text="Pancakes" Clicked="CategoryClicked" WidthRequest="250" VerticalOptions="Center" Grid.Row="4" Grid.Column="0" HorizontalOptions="Center"/>
-                <Button Text="Chilaquiles" Clicked="CategoryClicked" WidthRequest="250" VerticalOptions="Center" Grid.Row="5" Grid.Column="0" HorizontalOptions="Center"/>
-                <Button Text="French Toast" Clicked="CategoryClicked" WidthRequest="250" VerticalOptions="Center" Grid.Row="6" Grid.Column="0" HorizontalOptions="Center"/>
-                <Button Text="Crepas" Clicked="CategoryClicked" WidthRequest="250" VerticalOptions="Center" Grid.Row="7" Grid.Column="0" HorizontalOptions="Center"/>
-                <Button Text="Waffles" Clicked="CategoryClicked" WidthRequest="250" VerticalOptions="Center" Grid.Row="8" Grid.Column="0" HorizontalOptions="Center"/>
-                <Button Text="New Bruncheria" Clicked="CategoryClicked" WidthRequest="250" VerticalOptions="Center" Grid.Row="9" Grid.Column="0" HorizontalOptions="Center"/>
-                <Button Text="De La Granja" Clicked="CategoryClicked" WidthRequest="250" VerticalOptions="Center" Grid.Row="10" Grid.Column="0" HorizontalOptions="Center"/>
-                <Button Text="Breakfast Tacos" Clicked="CategoryClicked" WidthRequest="250" VerticalOptions="Center" Grid.Row="11" Grid.Column="0" HorizontalOptions="Center"/>
-                <Button Text="Lunch" Clicked="CategoryClicked" WidthRequest="250" VerticalOptions="Center" Grid.Row="12" Grid.Column="0" HorizontalOptions="Center"/>
-                <Button Text="Light Options" Clicked="CategoryClicked" WidthRequest="250" VerticalOptions="Center" Grid.Row="13" Grid.Column="0" HorizontalOptions="Center"/>
-                <Button Text="Drinks" Clicked="CategoryClicked" WidthRequest="250" VerticalOptions="Center" Grid.Row="14" Grid.Column="0" HorizontalOptions="Center"/>
-                <Button Text="Espresso Bar" Clicked="CategoryClicked" WidthRequest="250" VerticalOptions="Center" Grid.Row="15" Grid.Column="0" HorizontalOptions="Center"/>
-                <Button Text="Menudo y Barbacoa" Clicked="CategoryClicked" WidthRequest="250" VerticalOptions="Center" Grid.Row="16" Grid.Column="0" HorizontalOptions="Center"/>
-            </Grid>
+            <StackLayout>
+                <Picker x:Name="CategorySelectionPicker" Grid.Column="0" Grid.Row="0" >
+                    <Picker.Items>
+                        <x:String>Family Platters</x:String>
+                        <x:String>Starters</x:String>
+                        <x:String>Pan</x:String>
+                        <x:String>Omelet</x:String>
+                        <x:String>Pancakes</x:String>
+                        <x:String>Chilaquiles</x:String>
+                        <x:String>French Toast</x:String>
+                        <x:String>Crepas</x:String>
+                        <x:String>Waffles</x:String>
+                        <x:String>New Bruncheria</x:String>
+                        <x:String>De La Granja</x:String>
+                        <x:String>Breakfast Tacos</x:String>
+                        <x:String>Lunch</x:String>
+                        <x:String>Light Options</x:String>
+                        <x:String>Drinks</x:String>
+                        <x:String>Espresso Bar</x:String>
+                        <x:String>Menudo y Barbacoa</x:String>
+                        <x:String>Favorites</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Grid x:Name="MenuItemDisplayGrid">
+                    <views:CategoryDisplayView BindingContext="{Binding }"></views:CategoryDisplayView>
+                </Grid>
+            </StackLayout>
             
-           
         </ScrollView>
     </StackLayout>
     

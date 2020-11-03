@@ -1,6 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:views="clr-namespace:LaFinca.Views"
              x:Class="LaFinca.Views.MenuCategoryDetailPage">
-    
+    <StackLayout>
+        <StackLayout.GestureRecognizers>
+            <SwipeGestureRecognizer Direction="Left" Swiped="SwipeGestureRecognizer_Swiped" />
+            <SwipeGestureRecognizer Direction="Right" Swiped="SwipeGestureRecognizer_Swiped" />
+        </StackLayout.GestureRecognizers>
+        <ScrollView>
+            <StackLayout x:Name="CategoryDisplayStackLayout">
+                <Picker x:Name="CategorySelectionPicker" SelectedIndexChanged="CategorySelectionPicker_SelectedIndexChanged_1" Grid.Column="0" Grid.Row="0" >
+                    <Picker.Items>
+                        <x:String>Family Platters</x:String>
+                        <x:String>Starters</x:String>
+                        <x:String>Pan</x:String>
+                        <x:String>Omelet</x:String>
+                        <x:String>Pancakes</x:String>
+                        <x:String>Chilaquiles</x:String>
+                        <x:String>French Toast</x:String>
+                        <x:String>Crepas</x:String>
+                        <x:String>Waffles</x:String>
+                        <x:String>New Bruncheria</x:String>
+                        <x:String>De La Granja</x:String>
+                        <x:String>Breakfast Tacos</x:String>
+                        <x:String>Lunch</x:String>
+                        <x:String>Light Options</x:String>
+                        <x:String>Drinks</x:String>
+                        <x:String>Espresso Bar</x:String>
+                        <x:String>Menudo y Barbacoa</x:String>
+                        <x:String>Favorites</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <ContentView x:Name="MenuItemDispalyView" Content="{Binding CurrentItem}"></ContentView>
+            </StackLayout>
+
+        </ScrollView>
+    </StackLayout>
 </ContentPage>

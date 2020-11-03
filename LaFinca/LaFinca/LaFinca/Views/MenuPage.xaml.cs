@@ -17,10 +17,9 @@ namespace LaFinca.Views
         MenuViewModel _viewModel;
         public MenuPage()
         {
-            _viewModel = new MenuViewModel();
             Title = "Category Selection";
             InitializeComponent();
-            
+            CategorySelectionPicker.SelectedIndex = 10;
          }
 
         public MenuPage(List<Models.MenuItem> items)
@@ -28,11 +27,5 @@ namespace LaFinca.Views
             _viewModel = new MenuViewModel();
         }
 
-        async
-        private void CategoryClicked(object sender, EventArgs e)
-        {
-            string category = (sender as Button).Text.ToString();
-           await Navigation.PushAsync(new MenuCategoryDetailPage(category));
-        }
     }
 }
