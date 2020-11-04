@@ -8,8 +8,9 @@
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Entry Placeholder="Username" Text="{Binding username}"/>
-            <Entry Placeholder="Password" Text="{Binding password}" IsPassword="true"/>
+            <Label x:Name="AuthenticationLabel" Text="{Binding authenticationMessage}"></Label>
+            <Entry Placeholder="Username" x:Name="UsernameLoginEntry" Text="{Binding username}"/>
+            <Entry Placeholder="Password" x:Name="PasswordLoginEntry" Text="{Binding password}" IsPassword="true"/>
 
             <Button VerticalOptions="Center" Clicked="LoginClicked" Text="Login"/>
             <Button VerticalOptions="Center" Clicked="CancleClicked" Text="Cancle"/>

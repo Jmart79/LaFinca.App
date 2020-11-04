@@ -13,14 +13,13 @@ namespace LaFinca.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
-        IUser user;
-        private List<IUser> users;
+        private LoginViewModel _viewModel { get; set; }
         public LoginPage()
         {
-            users = Application.Current.Properties["Users"] as List<IUser>;
-            user = new IUser();
+            _viewModel = new LoginViewModel();
+            this.BindingContext = _viewModel;
             InitializeComponent();
-            this.BindingContext = user;
+
         }
 
         public LoginPage(List<IUser> users,List<Models.MenuItem> items)
@@ -28,36 +27,35 @@ namespace LaFinca.Views
 
         }
 
-        private async void LoginClicked(object sender, EventArgs e)
+        private  void LoginClicked(object sender, EventArgs e)
         {
-            IUser foundUser = users.FirstOrDefault(child => child.username == user.username);
+            bool isLoginSuccessful = _viewModel.IsLoginSuccessful();
 
-            if(foundUser != null)
+            if (isLoginSuccessful)
             {
-                if(foundUser.password == user.password)
+                Application.Current.Properties["User"] = _viewModel.user;
+                string role = _viewModel.user.role.ToLower();
+                switch (role)
                 {
-                    Application.Current.Properties["User"] = foundUser;
-                    string role = foundUser.role.ToLower();
-                    switch (role)
-                    {
-                        case "user":
-                            Application.Current.MainPage = new CustomerHomePage(false);
-                            break;
-                        case "management":
-                            //assign main page to the ManagementDetailPage
-                            break;
-                        default:
-                            Application.Current.MainPage = new CustomerHomePage(false);
-                            break;
-                    }
-                    await Navigation.PushAsync(new DeleteUser());
+                    case "customer":
+                        Application.Current.MainPage = new CustomerHomePage(false);
+                        break;
+                    case "management":
+                        //assign main page to the ManagementDetailPage
+                        break;
+                    default:
+                        Application.Current.MainPage = new CustomerHomePage(false);
+                        break;
                 }
             }
-            else
-            {
 
-            }
-
+            //_viewModel.NavigateLoginAttempt();
+            //string username = _viewModel.user.username;
+            //string password = _viewModel.user.password;
+            //string authMsg = _viewModel.authenticationMessage;
+            //UsernameLoginEntry.BindingContext = _viewModel.user.username;
+            //PasswordLoginEntry.BindingContext = _viewModel.user.password;
+            //AuthenticationLabel.BindingContext = _viewModel.authenticationMessage;
         }
 
         private void CancleClicked(object sender, EventArgs e)
