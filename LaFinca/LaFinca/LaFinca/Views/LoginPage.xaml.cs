@@ -36,6 +36,20 @@ namespace LaFinca.Views
             {
                 if(foundUser.password == user.password)
                 {
+                    Application.Current.Properties["User"] = foundUser;
+                    string role = foundUser.role.ToLower();
+                    switch (role)
+                    {
+                        case "user":
+                            Application.Current.MainPage = new CustomerHomePage(false);
+                            break;
+                        case "management":
+                            //assign main page to the ManagementDetailPage
+                            break;
+                        default:
+                            Application.Current.MainPage = new CustomerHomePage(false);
+                            break;
+                    }
                     await Navigation.PushAsync(new DeleteUser());
                 }
             }
@@ -44,6 +58,11 @@ namespace LaFinca.Views
 
             }
 
+        }
+
+        private void CancleClicked(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
         }
     }
 }

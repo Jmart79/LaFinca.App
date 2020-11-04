@@ -5,13 +5,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="LaFinca.Views.LoginPage"
-             Shell.NavBarIsVisible="False">
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
             <Entry Placeholder="Username" Text="{Binding username}"/>
             <Entry Placeholder="Password" Text="{Binding password}" IsPassword="true"/>
 
             <Button VerticalOptions="Center" Clicked="LoginClicked" Text="Login"/>
+            <Button VerticalOptions="Center" Clicked="CancleClicked" Text="Cancle"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
