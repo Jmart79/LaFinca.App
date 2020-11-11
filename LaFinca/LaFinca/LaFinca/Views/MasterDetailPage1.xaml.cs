@@ -16,6 +16,7 @@ namespace LaFinca.Views
         {
             InitializeComponent();
             MasterPage.lv.ItemSelected += ListView_ItemSelected;
+            string pause = "Pause";
         }
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)

@@ -39,6 +39,7 @@ namespace LaFinca.Views
                 {
                     case "customer":
                         Application.Current.MainPage = new CustomerHomePage(false);
+                        Application.Current.Properties["Cart"] = new List<Models.MenuItem>();
                         break;
                     case "management":
                        // Application.Current.MainPage = new NavigationPage(new MenuCategoryDetailPage());
