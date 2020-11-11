@@ -31,7 +31,7 @@ namespace LaFinca.Views
         {
             bool isLoginSuccessful = _viewModel.IsLoginSuccessful();
 
-            if (isLoginSuccessful)
+            if (isLoginSuccessful) 
             {
                 Application.Current.Properties["User"] = _viewModel.user;
                 string role = _viewModel.user.role.ToLower();
@@ -41,21 +41,15 @@ namespace LaFinca.Views
                         Application.Current.MainPage = new CustomerHomePage(false);
                         break;
                     case "management":
+                       // Application.Current.MainPage = new NavigationPage(new MenuCategoryDetailPage());
                         //assign main page to the ManagementDetailPage
+                        Application.Current.MainPage = new MasterDetailPage1();
                         break;
                     default:
                         Application.Current.MainPage = new CustomerHomePage(false);
                         break;
                 }
             }
-
-            //_viewModel.NavigateLoginAttempt();
-            //string username = _viewModel.user.username;
-            //string password = _viewModel.user.password;
-            //string authMsg = _viewModel.authenticationMessage;
-            //UsernameLoginEntry.BindingContext = _viewModel.user.username;
-            //PasswordLoginEntry.BindingContext = _viewModel.user.password;
-            //AuthenticationLabel.BindingContext = _viewModel.authenticationMessage;
         }
 
         private void CancleClicked(object sender, EventArgs e)

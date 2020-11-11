@@ -15,6 +15,8 @@ namespace LaFinca.Views
         private bool _isGuest { get; set; }
         public CustomerHomePage(bool isGuest)
         {
+            Xamarin.Forms.PlatformConfiguration.AndroidSpecific.TabbedPage.SetIsSwipePagingEnabled(this, false);
+
             this._isGuest = isGuest;
 
             NavigationPage orderPage;

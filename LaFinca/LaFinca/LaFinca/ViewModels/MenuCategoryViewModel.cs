@@ -73,7 +73,8 @@ namespace LaFinca.ViewModels
                 item = CategoryItems.ElementAt(_itemIndex);
             }else if(_itemIndex == 0)
             {
-                item = CategoryItems.ElementAt(_itemIndex--);
+                item = CategoryItems.ElementAt(_itemIndex);
+                _itemIndex = CategoryItems.Count - 1;
             }
             else
             {

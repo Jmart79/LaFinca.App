@@ -2,7 +2,6 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:views="clr-namespace:LaFinca.Views"
              x:Class="LaFinca.Views.MenuCategoryDetailPage"
-             NavigationPage.HasNavigationBar="False"
              Title="Menu">
     <StackLayout>
         <StackLayout.GestureRecognizers>

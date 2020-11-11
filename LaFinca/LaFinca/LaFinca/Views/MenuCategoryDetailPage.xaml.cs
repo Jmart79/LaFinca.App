@@ -1,4 +1,5 @@
-﻿using LaFinca.ViewModels;
+﻿using LaFinca.Models;
+using LaFinca.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,22 @@ namespace LaFinca.Views
             _category = "Pancakes";
             _viewModel = new MenuCategoryViewModel(_category);
             BindingContext = _viewModel;
+            IUser user = Application.Current.Properties["User"] as IUser;
+            string role = user.role.ToLower();
+            bool isManagement = role == "management";
+
+            if (isManagement)
+            {
+                NavigationPage.SetHasNavigationBar(this,true);
+                NavigationPage.SetHasBackButton(this, true);
+               
+            
+            }
+            else
+            {
+                NavigationPage.SetHasNavigationBar(this, false);
+            }
+            
             //CategoryDisplayView categoryDisplayView = _viewModel.CurrentItem;
             //this.CategoryDisplayStackLayout.Children.Add(_viewModel.CurrentItem) ;
             InitializeComponent();

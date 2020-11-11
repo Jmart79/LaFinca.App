@@ -36,7 +36,11 @@ namespace LaFinca.Views
         async void OnContinueClicked(object sender, EventArgs e)
         {
             NavigationPage temp = new NavigationPage();
-            await Navigation.PushAsync(new CustomerHomePage(true));
+            IUser user    = new IUser();
+            Application.Current.Properties["User"] = user;
+           await Navigation.PushAsync(new CustomerHomePage(true));
+
+           // await Navigation.PushAsync(new MasterDetailPage1Master());
         }
     }
 }
