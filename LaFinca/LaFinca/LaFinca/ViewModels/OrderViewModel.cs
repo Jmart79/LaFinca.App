@@ -4,7 +4,11 @@ using System.Text;
 
 namespace LaFinca.ViewModels
 {
-    class CategoryDetailViewModel : BaseViewModel
+    public class OrderViewModel : BaseViewModel
     {
+        public List<Models.MenuItem> cart;
+        
+
+
     }
 }

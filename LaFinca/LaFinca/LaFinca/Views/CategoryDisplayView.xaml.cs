@@ -38,6 +38,25 @@ namespace LaFinca.Views
 
         private void Button_Clicked_1(object sender, EventArgs e)
         {
+            Button orderBtn = sender as Button;
+            string btnText = orderBtn.Text.ToLower();
+
+            List<Models.MenuItem> cart = Application.Current.Properties["Cart"] as List<Models.MenuItem>;
+
+            switch (btnText)
+            {
+                case "order":
+                    cart.Add(_item);
+                    orderBtn.Text = "Remove";
+                    break;
+                case "remove":
+                    cart.Remove(_item);
+                    orderBtn.Text = "Order";
+                    break;
+                    default:
+                        break;
+            }
+            Application.Current.Properties["Cart"] = cart;
             //add to order
         }
     }

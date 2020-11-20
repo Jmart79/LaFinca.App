@@ -5,9 +5,13 @@
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <StackLayout.GestureRecognizers>
+                <SwipeGestureRecognizer Direction="Left" Swiped="SwipeGestureRecognizer_Swiped" />
+                <SwipeGestureRecognizer Direction="Right" Swiped="SwipeGestureRecognizer_Swiped" />
+            </StackLayout.GestureRecognizers>
+
+            <ContentView x:Name="OrderItemDisplayView" Content="{Binding CurrentItem}"></ContentView>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
