@@ -5,15 +5,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="LaFinca.Views.LoginPage"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False" BackgroundColor="#E9CDAA">
     <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+        <StackLayout Padding="20,50,20,20" VerticalOptions="Center">
             <Label x:Name="AuthenticationLabel" Text="{Binding authenticationMessage}"></Label>
             <Entry Placeholder="Username" x:Name="UsernameLoginEntry" Text="{Binding username}"/>
             <Entry Placeholder="Password" x:Name="PasswordLoginEntry" Text="{Binding password}" IsPassword="true"/>
 
-            <Button VerticalOptions="Center" Clicked="LoginClicked" Text="Login"/>
-            <Button VerticalOptions="Center" Clicked="CancleClicked" Text="Cancle"/>
+            <Button VerticalOptions="Center" Clicked="LoginClicked" Text="Login" WidthRequest="225" HorizontalOptions="Center"/>
+            <Button VerticalOptions="Center" Clicked="CancleClicked" Text="Cancle" WidthRequest="225" HorizontalOptions="Center"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
