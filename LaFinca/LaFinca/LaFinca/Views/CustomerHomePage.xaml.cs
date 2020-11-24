@@ -30,7 +30,6 @@ namespace LaFinca.Views
                 settingsPage = new NavigationPage(new LoginPage());
                 settingsPage.Title = "Login";
 
-
                 Children.Add(menuPage);
                 Children.Add(settingsPage);
             }

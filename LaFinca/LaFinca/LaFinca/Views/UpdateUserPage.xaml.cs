@@ -31,6 +31,14 @@ namespace LaFinca.Views
             }
         }
 
+        public UpdateUserPage(IUser user)
+        {
+            this.BindingContext = user;
+            UserToUpdate = user;
+            UpdateRolePicker.IsVisible = true;
+
+        }
+
         private void UsernameInputed(object sender, EventArgs e)
         {
             UsernameToUpdate = UsernameToUpdateEntry.Text;
@@ -50,6 +58,13 @@ namespace LaFinca.Views
         {
             string selected = e.ToString();
             string wtvr = sender.ToString();
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            List<IUser> users = Application.Current.Properties["Users"] as List<IUser>;
+            users.Remove(UserToUpdate);
+            Navigation.PopAsync();
         }
     }
 }

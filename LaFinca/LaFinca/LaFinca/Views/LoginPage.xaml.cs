@@ -51,6 +51,9 @@ namespace LaFinca.Views
                         break;
                 }
             }
+        
+        
+        
         }
 
         private void CancleClicked(object sender, EventArgs e)

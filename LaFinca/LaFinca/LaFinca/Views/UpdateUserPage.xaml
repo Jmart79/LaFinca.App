@@ -13,13 +13,14 @@
             <Entry Text="{Binding password}" IsPassword="True" Placeholder="Password"/>
             <Entry Text="{Binding password}" IsPassword="True" Placeholder="Password"/>
             <Label>Role</Label>
-            <Picker SelectedItem="{Binding Role}" x:Name="UpdateRolePicker" SelectedIndexChanged="Picker_SelectedIndexChanged">
+            <Picker SelectedItem="{Binding Role}" IsVisible="False" x:Name="UpdateRolePicker" SelectedIndexChanged="Picker_SelectedIndexChanged">
                 <Picker.Items>
                     <x:String>Customer</x:String>
                     <x:String>Management</x:String>
                 </Picker.Items>
             </Picker>
             <Button Text="Update" Clicked="UpdateClicked"/>
+            <Button IsVisible="False" Text="Delete" Clicked="Button_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
