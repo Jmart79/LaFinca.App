@@ -19,7 +19,6 @@ namespace LaFinca.Views
         public UpdateUserPage()
         {
             InitializeComponent();
-            UpdateRolePicker.IsVisible = false;
         }
 
         public UpdateUserPage(bool IsManager)
@@ -35,7 +34,9 @@ namespace LaFinca.Views
         {
             this.BindingContext = user;
             UserToUpdate = user;
-            UpdateRolePicker.IsVisible = true;
+            InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, true);
+            //UpdateRolePicker.IsVisible = true;
 
         }
 

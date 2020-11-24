@@ -38,8 +38,8 @@ namespace LaFinca.Views
             NavigationPage temp = new NavigationPage();
             IUser user    = new IUser();
             Application.Current.Properties["User"] = user;
-           await Navigation.PushAsync(new CustomerHomePage(true));
-
+            //await Navigation.PushAsync(new CustomerHomePage(true));
+            await Navigation.PushAsync(new ViewUsersPage());
            // await Navigation.PushAsync(new MasterDetailPage1Master());
         }
     }

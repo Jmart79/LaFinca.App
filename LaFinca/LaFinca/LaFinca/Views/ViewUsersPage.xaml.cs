@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LaFinca.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,17 @@ namespace LaFinca.Views
         public ViewUsersPage()
         {
             InitializeComponent();
+
+            List<IUser> users = Application.Current.Properties["Users"] as List<IUser>;
+            List<string> usernames = new List<string>();
+
+            foreach(IUser user in users)
+            {
+                usernames.Add(user.username);
+            }
+
+            this.Content = new UsersListView(usernames,users);
+
         }
     }
 }

@@ -29,16 +29,17 @@ namespace LaFinca.Views
 
         private void GenerateList()
         {
+            List<View> children = new List<View>();
             Label usernameLabel;
             TapGestureRecognizer selectUser_Tap = new TapGestureRecognizer();
-            IUser selectedUser;
 
+            int counter = 0;
             foreach(string username in Usernames)
             {
                 usernameLabel = new Label
                 {
                     Text = username,
-                    FontSize = 75,
+                    FontSize = 25,
                     TextColor = Color.FromHex("#134E6F"),
                     BackgroundColor = Color.FromHex("#1AC0C6"),
                     WidthRequest = 175,
@@ -47,19 +48,27 @@ namespace LaFinca.Views
 
                 selectUser_Tap.Tapped += (s, e) =>
                 {
-                    selectedUser = Users.FirstOrDefault(user => user.username == username);
+                    IUser selectedUser;
+                    selectedUser = Users.FirstOrDefault(user => user.username == (s as Label).Text);
 
-                    if(selectedUser != null)
+                    if(selectedUser != null && counter == 0)
                     {
                         Navigation.PushAsync(new UpdateUserPage(selectedUser));
+                        counter++;
                     }
                 };
                 usernameLabel.GestureRecognizers.Add(selectUser_Tap);
-               // children.Add(usernameLabel);
-                this.UsersListLayout.Children.Add(usernameLabel);
+                children.Add(usernameLabel);                
             }
 
+            StackLayout layout = new StackLayout();
 
+            foreach(View view in children)
+            {
+                layout.Children.Add(view);
+            }
+
+            this.Content = layout;
         }
 
     }
