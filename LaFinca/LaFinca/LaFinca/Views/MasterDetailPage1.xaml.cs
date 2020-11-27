@@ -14,14 +14,15 @@ namespace LaFinca.Views
     {
         public MasterDetailPage1()
         {
-            InitializeComponent();
-            MasterPage.lv.ItemSelected += ListView_ItemSelected;
             string pause = "Pause";
+            InitializeComponent();           
+            MasterPage.lv.ItemTapped += ListView_ItemSelected;
+           
         }
 
-        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private void ListView_ItemSelected(object sender, ItemTappedEventArgs e)
         {
-            var item = e.SelectedItem as MasterDetailPage1MasterMenuItem;
+            var item = e.Item as MasterDetailPage1MasterMenuItem;
             if (item == null)
                 return;
 

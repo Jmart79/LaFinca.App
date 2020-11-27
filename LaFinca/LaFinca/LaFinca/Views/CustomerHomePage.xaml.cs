@@ -29,7 +29,7 @@ namespace LaFinca.Views
                 menuPage.Title = "Menu";
                 settingsPage = new NavigationPage(new LoginPage());
                 settingsPage.Title = "Login";
-
+                NavigationPage.SetHasNavigationBar(settingsPage, false);
                 Children.Add(menuPage);
                 Children.Add(settingsPage);
             }
@@ -37,10 +37,12 @@ namespace LaFinca.Views
             {
                 orderPage = new NavigationPage(new OrderPage());
                 orderPage.Title = "Order";
+                NavigationPage.SetHasNavigationBar(orderPage, false);
                 menuPage = new NavigationPage(new MenuCategoryDetailPage());
                 menuPage.Title = "Menu";
                 settingsPage = new NavigationPage(new UpdateUserPage());
                 settingsPage.Title = "Account Settings";
+                NavigationPage.SetHasNavigationBar(settingsPage, false);
                 Children.Add(orderPage);
                 Children.Add(menuPage);
                 Children.Add(settingsPage);
