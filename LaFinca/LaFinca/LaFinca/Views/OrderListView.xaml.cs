@@ -23,6 +23,8 @@ namespace LaFinca.Views
         public OrderListView(List<Order> orders)
         {
             this.orders = orders;
+            GenerateList();
+            InitializeComponent();
         }
 
         private void GenerateList()
