@@ -56,7 +56,7 @@ namespace LaFinca.Views
                 
                     if(selectedOrder != null && counter == 0)
                     {
-                        Navigation.PushAsync(new OrderDetailPage(selectedOrder));
+                  //      Navigation.PushAsync(new OrderDetailPage(selectedOrder));
                         counter++;
                     }
                 };

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LaFinca.Views.OrderDetailPage">
+    <ContentPage.Content>
+        <StackLayout>
+            
+            <Label>The Order page</Label>
+            <Picker x:Name="OrderItemsPicker" SelectedIndexChanged="OrderItemsPicker_SelectedIndexChanged"></Picker>
+            <Label>Order cost: </Label>
+            <Label>Tax: </Label>
+            <Label>Final cost: </Label>
+
+            <Label>Order Placed: </Label>
+            <Label>Estimated Wait: </Label>
+
+            <Button Text="Place Order"></Button>
+            <Button Text="Cancle Order"></Button>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
