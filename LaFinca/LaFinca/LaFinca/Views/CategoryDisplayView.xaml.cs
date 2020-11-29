@@ -28,15 +28,50 @@ namespace LaFinca.Views
             this._item = item;
             this.BindingContext = _item;
             InitializeComponent();
+            if (Application.Current.Properties.ContainsKey("Cart"))
+            {
+                List<Models.MenuItem> items = Application.Current.Properties["Cart"] as List<Models.MenuItem>;
+                Models.MenuItem foundItem = items.FirstOrDefault(child => child.ItemName == item.ItemName);
+                if (foundItem != null)
+                {
+                    OrderButton.Text = "Remove from Order";
+                }
+                else
+                {
+                    OrderButton.Text = "Order";
+                }
+            }
+            else
+            {
+                OrderButton.Text = "Order";
+            }
+
+            if (Application.Current.Properties.ContainsKey("Favorites"))
+            {
+                List<Models.MenuItem> items = Application.Current.Properties["Favorites"] as List<Models.MenuItem>;
+                Models.MenuItem foundItem = items.FirstOrDefault(child => child.ItemName == item.ItemName);
+                if (foundItem != null)
+                {
+                    FavorButton.Text = "Remove From Favorites";
+                }
+                else
+                {
+                    FavorButton.Text = "Favorite";
+                }
+            }
+            else
+            {
+                FavorButton.Text = "Favorite";
+            }
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void Button_Clicked_1(object sender, EventArgs e)
         {
             //add to favors list
             //use mysql to store local user data
         }
 
-        private void Button_Clicked_1(object sender, EventArgs e)
+        private void Button_Clicked(object sender, EventArgs e)
         {
             Button orderBtn = sender as Button;
             string btnText = orderBtn.Text.ToLower();
@@ -49,7 +84,7 @@ namespace LaFinca.Views
                     cart.Add(_item);
                     orderBtn.Text = "Remove";
                     break;
-                case "remove":
+                case "remove from order":
                     cart.Remove(_item);
                     orderBtn.Text = "Order";
                     break;

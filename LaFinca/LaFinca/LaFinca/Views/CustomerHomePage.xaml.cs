@@ -35,7 +35,7 @@ namespace LaFinca.Views
             }
             else
             {
-                orderPage = new NavigationPage(new OrderPage());
+                orderPage = new NavigationPage(new OrderDetailPage());
                 orderPage.Title = "Order";
                 NavigationPage.SetHasNavigationBar(orderPage, false);
                 menuPage = new NavigationPage(new MenuCategoryDetailPage());
@@ -46,13 +46,24 @@ namespace LaFinca.Views
                 Children.Add(orderPage);
                 Children.Add(menuPage);
                 Children.Add(settingsPage);
+
+                CurrentPage = menuPage;
             }
 
 
             InitializeComponent();
-        }        
+        }
 
-
-
+        private void TabbedPage_CurrentPageChanged(object sender, EventArgs e)
+        {
+            CustomerHomePage page = sender as CustomerHomePage;
+            NavigationPage currentPage = (NavigationPage)page.CurrentPage;
+            if(currentPage.Title == "Order")
+            {
+                page.CurrentPage = new NavigationPage(new OrderDetailPage());
+            }
+            string str = sender.ToString();
+            Type type = sender.GetType();
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LaFinca.Models;
+using LaFinca.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +14,12 @@ namespace LaFinca.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OrderDetailPage : ContentPage
     {
+        public OrderViewModel viewModel { get; set; }
         public OrderDetailPage()
         {
+            viewModel = new OrderViewModel();
+            this.BindingContext = viewModel;
+            NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
         }
 

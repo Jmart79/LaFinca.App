@@ -16,18 +16,22 @@ namespace LaFinca.Models
         public string OrderPlaced { get; set; }
         public string OrderReady { get; set; } = null;
         public string State { get; set; }
-        public List<string> Items { get; set; }
+        public List<Models.MenuItem> Items { get; set; }
 
         public Order() { }
 
-        public Order(string id, string username, string orderPlaced, string state, double cost, List<string> names)
+        public Order(string id, string username, string orderPlaced, string state, List<Models.MenuItem> names)
         {
             this.OrderId = id;
             this.CustomerUsername = username;
             this.OrderPlaced = orderPlaced;
             this.State = state;
-            this.Cost = cost;
-            this.FinalCost = cost * .0625;
+            
+            foreach(Models.MenuItem item in names)
+            {
+                Cost += item.Cost;
+            }
+            this.FinalCost = Cost * .0625;
             this.Items = names;
         }
 
