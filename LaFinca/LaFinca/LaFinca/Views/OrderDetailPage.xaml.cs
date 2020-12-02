@@ -18,7 +18,7 @@ namespace LaFinca.Views
         public OrderDetailPage()
         {
             viewModel = new OrderViewModel();
-            this.BindingContext = viewModel;
+            this.BindingContext = viewModel.currentOrder;
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
         }

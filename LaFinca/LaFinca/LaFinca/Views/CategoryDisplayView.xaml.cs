@@ -1,4 +1,6 @@
-﻿using LaFinca.ViewModels;
+﻿using LaFinca.Models;
+using LaFinca.Services;
+using LaFinca.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,12 +22,20 @@ namespace LaFinca.Views
         {
             this._viewModel = new MenuCategoryViewModel();
             this._item = _viewModel.GetNextItem();
+            //this._item.Description += $" {_item.Cost}";
             this.BindingContext = _item;
             InitializeComponent();
+
+            IUser currentUser = Application.Current.Properties["User"] as IUser;
+            if (currentUser.role.ToLower() == "management")
+            {
+                this.DeleteButton.IsVisible = true;
+            }
         }
         public CategoryDisplayView(Models.MenuItem item)
         {
             this._item = item;
+           // this._item.Description += $" {_item.Cost}";
             this.BindingContext = _item;
             InitializeComponent();
             if (Application.Current.Properties.ContainsKey("Cart"))
@@ -63,6 +73,13 @@ namespace LaFinca.Views
             {
                 FavorButton.Text = "Favorite";
             }
+
+            IUser currentUser = Application.Current.Properties["User"] as IUser;
+            if (currentUser.role.ToLower() == "management")
+            {
+                this.DeleteButton.IsVisible = true;
+            }
+
         }
 
         private void Button_Clicked_1(object sender, EventArgs e)
@@ -93,6 +110,15 @@ namespace LaFinca.Views
             }
             Application.Current.Properties["Cart"] = cart;
             //add to order
+        }
+
+        private async void DeleteButton_Clicked(object sender, EventArgs e)
+        {
+            ItemRestService service = new ItemRestService();
+            await service.DeleteData(_item.ItemName);
+            List<Models.MenuItem> items = Application.Current.Properties["Items"] as List<Models.MenuItem>;
+            items.Remove(_item);
+            Application.Current.Properties["Items"] = items;
         }
     }
 }

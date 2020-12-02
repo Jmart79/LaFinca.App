@@ -6,7 +6,9 @@ using LaFinca.Views;
 using System.Collections.Generic;
 using LaFinca.Models;
 using System.Threading.Tasks;
-
+[assembly: ExportFont("Merriweather-BlackItalic.ttf", Alias ="TitleFont")]
+[assembly: ExportFont("Cinzel-SemiBold.ttf", Alias = "TitleFont2")]
+[assembly: ExportFont("Vollkorn-MediumItalic.ttf", Alias = "TitleFont2")]
 namespace LaFinca
 {
     public partial class App : Application
@@ -15,6 +17,7 @@ namespace LaFinca
         public static List<Models.MenuItem> _items;
         public  App()
         {
+            //DependencyService.Get<IStatusBar>().HideStatusBar();
             InitializeComponent();
 
             UserRestService userService = new UserRestService();

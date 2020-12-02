@@ -4,6 +4,9 @@
              x:Class="LaFinca.Views.CustomerHomePage"
             NavigationPage.HasNavigationBar="False"
             CurrentPageChanged="TabbedPage_CurrentPageChanged"
+            BarBackgroundColor="#7A2323"
+            SelectedTabColor="Gray"
+            BarTextColor="White"
             
             >
 

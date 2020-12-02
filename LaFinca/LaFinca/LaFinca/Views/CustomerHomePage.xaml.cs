@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LaFinca.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,7 +42,8 @@ namespace LaFinca.Views
                 menuPage = new NavigationPage(new MenuCategoryDetailPage());
                 menuPage.Title = "Menu";
                 settingsPage = new NavigationPage(new UpdateUserPage());
-                settingsPage.Title = "Account Settings";
+                settingsPage.Title = "Account Settings";                
+                settingsPage.BindingContext = Application.Current.Properties["User"] as IUser;
                 NavigationPage.SetHasNavigationBar(settingsPage, false);
                 Children.Add(orderPage);
                 Children.Add(menuPage);
@@ -54,16 +56,35 @@ namespace LaFinca.Views
             InitializeComponent();
         }
 
+           private bool isSet = false;
         private void TabbedPage_CurrentPageChanged(object sender, EventArgs e)
         {
+         //   List<Models.MenuItem> cart = Application.Current.Properties["Cart"] as List<Models.MenuItem>;
             CustomerHomePage page = sender as CustomerHomePage;
             NavigationPage currentPage = (NavigationPage)page.CurrentPage;
+            string Pagetitle = currentPage.Title;
+
+            if (!isSet)
+            {
+
+                switch (Pagetitle)
+                {
+                    case "Order":
+                        isSet = true;
+                        page.CurrentPage = new NavigationPage(new OrderDetailPage());
+                        break;
+                    case "Account Settings":
+                        break;
+                    case "Menu":
+                        break;
+                    default:
+                        break;
+                }
+
+            }
             if(currentPage.Title == "Order")
             {
-                page.CurrentPage = new NavigationPage(new OrderDetailPage());
             }
-            string str = sender.ToString();
-            Type type = sender.GetType();
         }
     }
 }

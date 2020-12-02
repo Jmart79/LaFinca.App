@@ -32,6 +32,8 @@ namespace LaFinca.Models
             this.Cost = cost;
             this.IsAvailable = available;
             this.IsHouseFavorite = houseFavorite;
+
+            this.Description += $" {Cost}";
         }
     }
 }

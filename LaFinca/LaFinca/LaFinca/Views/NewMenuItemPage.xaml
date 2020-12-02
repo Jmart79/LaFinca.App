@@ -4,37 +4,42 @@
              x:Class="LaFinca.Views.NewMenuItemPage">
     <ContentPage.Content>
         <StackLayout>
-            <Entry  Text="{Binding ItemName}" Placeholder="Item Name"/>
-            <Label>Category</Label>
-            <Picker SelectedItem="{Binding Category}" >
-                <Picker.Items>
-                    <x:String>Family Brunch Platters</x:String>
-                    <x:String>Startes</x:String>
-                    <x:String>Pan</x:String>
-                    <x:String>Omelet</x:String>
-                    <x:String>Pancakes</x:String>
-                    <x:String>Chilaquiles</x:String>
-                    <x:String>French Toast</x:String>
-                    <x:String>Crepas</x:String>
-                    <x:String>Waffles</x:String>
-                    <x:String>New Bruncheria</x:String>
-                    <x:String>De La Granja</x:String>
-                    <x:String>Breakfast Tacos</x:String>
-                    <x:String>Lunch</x:String>
-                    <x:String>Light Options</x:String>
-                    <x:String>Drinks</x:String>
-                    <x:String>Espresso Bar</x:String>
-                    <x:String>Menudo y Barbacoa</x:String>
-                    <x:String>Desserts and Sweets</x:String>
-                </Picker.Items>
-            </Picker>
-            <Entry Text="{Binding Cost}" Placeholder="Cost"/>
-            <Entry Text="{Binding Description}" Placeholder="Description"/>
-            <Label>Is House Favorite:</Label>
-            <Switch VerticalOptions="Center" x:Name="IsHouseFavoriteSwitch1" HorizontalOptions="Center" >
-                
-            </Switch>
-            <Button Clicked="CreateClicked" Text="Create"/> 
+            <Frame Margin="0,50,0,0" BackgroundColor="#FF9494" CornerRadius="10" HorizontalOptions="Center" WidthRequest="250">
+                <StackLayout>
+                    <Entry  Text="{Binding ItemName}" Placeholder="Item Name"/>
+                    <Label>Category</Label>
+                    <Picker SelectedItem="{Binding Category}" >
+                        <Picker.Items>
+                            <x:String>Family Brunch Platters</x:String>
+                            <x:String>Startes</x:String>
+                            <x:String>Pan</x:String>
+                            <x:String>Omelet</x:String>
+                            <x:String>Pancakes</x:String>
+                            <x:String>Chilaquiles</x:String>
+                            <x:String>French Toast</x:String>
+                            <x:String>Crepas</x:String>
+                            <x:String>Waffles</x:String>
+                            <x:String>New Bruncheria</x:String>
+                            <x:String>De La Granja</x:String>
+                            <x:String>Breakfast Tacos</x:String>
+                            <x:String>Lunch</x:String>
+                            <x:String>Light Options</x:String>
+                            <x:String>Drinks</x:String>
+                            <x:String>Espresso Bar</x:String>
+                            <x:String>Menudo y Barbacoa</x:String>
+                            <x:String>Desserts and Sweets</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <Entry Text="{Binding Cost}" Placeholder="Cost"/>
+                    <Entry Text="{Binding Description}" Placeholder="Description"/>
+                    <Label>Is House Favorite:</Label>
+                    <Switch VerticalOptions="Center" x:Name="IsHouseFavoriteSwitch1" HorizontalOptions="Center" >
+
+                    </Switch>
+                </StackLayout>
+            </Frame>
+            
+            <Button Margin="0,50,0,0" Clicked="CreateClicked" HorizontalOptions="Center" WidthRequest="225" MinimumWidthRequest="50" Text="Create"/> 
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

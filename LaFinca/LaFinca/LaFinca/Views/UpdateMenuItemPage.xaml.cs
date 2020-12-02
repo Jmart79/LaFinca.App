@@ -1,4 +1,5 @@
-﻿using LaFinca.Services;
+﻿using LaFinca.Models;
+using LaFinca.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,11 @@ namespace LaFinca.Views
         public UpdateMenuItemPage()
         {
             InitializeComponent();
+            IUser currentUser = Application.Current.Properties["User"] as IUser;
+            if(currentUser.role.ToLower() == "management")
+            {
+                this.DeleteItemButton.IsVisible = true;
+            }
         }
 
         
@@ -46,6 +52,15 @@ namespace LaFinca.Views
             List<Models.MenuItem> items = Application.Current.Properties["Items"] as List<Models.MenuItem>;
             Models.MenuItem foundItem = items.FirstOrDefault(child => child.ItemName == ItemToUpdateName);
             return foundItem;
+        }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            ItemRestService service = new ItemRestService();
+            await service.DeleteData(UpdatedItem.ItemName);
+            List<Models.MenuItem> items = Application.Current.Properties["Items"] as List<Models.MenuItem>;
+            items.Remove(UpdatedItem);
+            Application.Current.Properties["Items"] = items;
         }
     }
 }

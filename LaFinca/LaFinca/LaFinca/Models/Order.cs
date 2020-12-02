@@ -17,6 +17,7 @@ namespace LaFinca.Models
         public string OrderReady { get; set; } = null;
         public string State { get; set; }
         public List<Models.MenuItem> Items { get; set; }
+        public List<string> ItemsName { get; set; }
 
         public Order() { }
 

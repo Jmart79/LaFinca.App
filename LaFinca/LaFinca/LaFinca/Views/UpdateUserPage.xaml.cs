@@ -19,6 +19,15 @@ namespace LaFinca.Views
         public UpdateUserPage()
         {
             InitializeComponent();
+            IUser currentUser = Application.Current.Properties["User"] as IUser; 
+            if(currentUser.role.ToLower() == "management")
+            {
+                this.UpdateRolePicker.IsVisible = true;
+                this.DeleteUserButton.IsVisible = true;
+                this.DeleteUserButton.WidthRequest = 225;
+                
+                NavigationPage.SetHasNavigationBar(this, true);
+            }
         }
 
         public UpdateUserPage(bool IsManager)
@@ -62,11 +71,15 @@ namespace LaFinca.Views
             string wtvr = sender.ToString();
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
         {
             List<IUser> users = Application.Current.Properties["Users"] as List<IUser>;
             users.Remove(UserToUpdate);
-            Navigation.PopAsync();
+            UserRestService userService = new UserRestService();
+            string username = UsernameToUpdate;
+            await userService.Delete(username);
+            Application.Current.Properties["Users"] = users;
+            //Navigation.PopAsync();
         }
     }
 }

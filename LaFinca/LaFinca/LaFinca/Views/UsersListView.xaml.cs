@@ -34,18 +34,25 @@ namespace LaFinca.Views
             TapGestureRecognizer selectUser_Tap = new TapGestureRecognizer();
 
             int counter = 0;
+            int labelCounter = 0;
             foreach(string username in Usernames)
             {
                 usernameLabel = new Label
                 {
                     Text = username,
                     FontSize = 25,
-                    TextColor = Color.FromHex("#134E6F"),
-                    BackgroundColor = Color.FromHex("#1AC0C6"),
+                    TextColor = Color.Black,
+                    BackgroundColor = Color.FromHex("#FF9494"),
                     WidthRequest = 175,
                     HorizontalOptions = LayoutOptions.Center
+                    
                 };
 
+                if(labelCounter == 0)
+                {
+                    usernameLabel.Margin = new Thickness(0,50,0,0);
+                    labelCounter++;
+                }
                 selectUser_Tap.Tapped += (s, e) =>
                 {
                     IUser selectedUser;

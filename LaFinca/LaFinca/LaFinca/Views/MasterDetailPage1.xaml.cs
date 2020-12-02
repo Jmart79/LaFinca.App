@@ -15,7 +15,7 @@ namespace LaFinca.Views
         public MasterDetailPage1()
         {
             string pause = "Pause";
-            InitializeComponent();           
+            InitializeComponent();
             MasterPage.lv.ItemTapped += ListView_ItemSelected;
            
         }
@@ -29,7 +29,9 @@ namespace LaFinca.Views
             var page = (Page)Activator.CreateInstance(item.TargetType);
             page.Title = item.Title;
 
-            Detail = new NavigationPage(page);
+            NavigationPage navPage = new NavigationPage(page);
+            navPage.BarBackgroundColor = Color.FromHex("#7A2323");
+            Detail = navPage;
             IsPresented = false;
 
             MasterPage.lv.SelectedItem = null;

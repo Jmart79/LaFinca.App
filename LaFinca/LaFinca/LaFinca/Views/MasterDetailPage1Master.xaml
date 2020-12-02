@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LaFinca.Views.MasterDetailPage1Master"
-             Title="Management Navigation">
+             Title="Management Navigation" 
+             >
   <StackLayout>
     <ListView x:Name="MenuItemsListView"
               
@@ -10,7 +11,7 @@
               ItemsSource="{Binding MenuItems}"
               >
       <ListView.Header>
-        <Grid BackgroundColor="#03A9F4">
+                <Grid BackgroundColor="#7A2323">
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="*"/>
