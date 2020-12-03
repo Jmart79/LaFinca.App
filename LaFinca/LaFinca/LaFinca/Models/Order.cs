@@ -32,7 +32,7 @@ namespace LaFinca.Models
             {
                 Cost += item.Cost;
             }
-            this.FinalCost = Cost * .0625;
+            this.FinalCost = (Cost * .0825) + Cost;
             this.Items = names;
         }
 
