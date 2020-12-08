@@ -24,7 +24,12 @@ namespace LaFinca.Views
                 this.UpdateRolePicker.IsVisible = true;
                 this.DeleteUserButton.IsVisible = true;
                 this.DeleteUserButton.WidthRequest = 225;                
-                NavigationPage.SetHasNavigationBar(this, true);
+              
+
+            }
+            else
+            {
+                NavigationPage.SetHasNavigationBar(this, false);
             }
         }
 

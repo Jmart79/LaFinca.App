@@ -67,6 +67,7 @@ namespace LaFinca.Views
                         var parentOfParent = this.Parent.Parent.Parent;
                         MasterDetailPage1 parentPage = (parentOfParent as MasterDetailPage1);
                         NavigationPage detailPage = new NavigationPage(updateUserPage);
+                        NavigationPage.SetHasNavigationBar(detailPage, true);
                         detailPage.BarBackgroundColor = Color.FromHex("#7A2323");
                         parentPage.Detail = detailPage;
                         parentPage.IsPresented = false;                        
