@@ -18,7 +18,8 @@ namespace LaFinca.Views
         public UpdateUserPage()
         {
             InitializeComponent();
-            IUser currentUser = Application.Current.Properties["User"] as IUser; 
+            IUser currentUser = Application.Current.Properties["User"] as IUser;
+            UserToUpdate = currentUser;
             if(currentUser.role.ToLower() == "management")
             {
                 this.UpdateRolePicker.IsVisible = true;

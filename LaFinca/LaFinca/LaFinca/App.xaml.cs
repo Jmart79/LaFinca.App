@@ -26,9 +26,7 @@ namespace LaFinca
             SetData(userService, itemService);
             List<IUser> users = Application.Current.Properties["Users"] as List<IUser>;
             MainPage = new NavigationPage(new HomePage());
-        }
-
-       
+        }       
 
         private async void SetData(UserRestService userservice, ItemRestService itemService)
         {

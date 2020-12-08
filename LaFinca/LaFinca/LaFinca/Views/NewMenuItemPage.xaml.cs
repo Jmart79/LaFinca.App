@@ -50,6 +50,7 @@ namespace LaFinca.Views
             NavigationPage.SetHasNavigationBar(detailPage, true);
 
             detailPage.BackgroundColor = Color.FromHex("#7A2323");
+            detailPage.BarBackgroundColor = Color.FromHex("#7A2323");
             parentPage.Detail = detailPage;
             parentPage.IsPresented = false;
             
