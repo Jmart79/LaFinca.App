@@ -111,6 +111,41 @@ namespace LaFinca.Services
             return await RefreshData();
         }
 
+        public async Task<List<string>> FavorItem(string username,string itemName)
+        {
+            List<string> favoriteItems;
+            Uri uri = new Uri(string.Format($"https://10.0.2.2:5001/Users/FavorItem?username={username}&itemName={itemName}"));
+
+            HttpResponseMessage response = await client.GetAsync(uri);
+
+            return await GetFavorites(username);
+        }
+
+        public async Task<List<string>> UnFavorItem(string username, string itemName)
+        {
+            Uri uri = new Uri(string.Format($"https://10.0.2.2:5001/Users/UnFavorItem?username={username}&itemName={itemName}"));
+
+            HttpResponseMessage response = await client.GetAsync(uri);
+
+            return await GetFavorites(username);
+        }
+
+        public async Task<List<string>> GetFavorites(string username)
+        {
+            List<string> favorites = new List<string>() ;
+
+            Uri uri = new Uri(string.Format($"https://10.0.2.2:5001/Users/GetFavorites?username={username}"));
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, uri);
+            HttpResponseMessage response = client.SendAsync(request).GetAwaiter().GetResult();
+
+            if (response.IsSuccessStatusCode)
+            {
+                string content = await response.Content.ReadAsStringAsync();
+                favorites = JsonConvert.DeserializeObject<List<string>>(content);
+            }
+
+            return favorites;
+        }
 
     }
 }

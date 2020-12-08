@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LaFinca.Models;
+using LaFinca.Services;
 using LaFinca.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -27,7 +28,7 @@ namespace LaFinca.Views
 
         }
 
-        private  void LoginClicked(object sender, EventArgs e)
+        private void LoginClicked(object sender, EventArgs e)
         {
             bool isLoginSuccessful = _viewModel.IsLoginSuccessful();
 
@@ -40,6 +41,10 @@ namespace LaFinca.Views
                     case "customer":
                         Application.Current.MainPage = new CustomerHomePage(false);
                         Application.Current.Properties["Cart"] = new List<Models.MenuItem>();
+                        UserRestService service = new UserRestService();
+
+                      //  List<string> favoritesList = await service.GetFavorites(_viewModel.user.username) ;
+                        Application.Current.Properties["Favorites"] = new List<string>();
                         
                         break;
                     case "management":

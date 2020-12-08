@@ -58,9 +58,10 @@ namespace LaFinca.Views
 
             if (Application.Current.Properties.ContainsKey("Favorites"))
             {
-                List<Models.MenuItem> items = Application.Current.Properties["Favorites"] as List<Models.MenuItem>;
-                Models.MenuItem foundItem = items.FirstOrDefault(child => child.ItemName == item.ItemName);
-                if (foundItem != null)
+                List<string> items = Application.Current.Properties["Favorites"] as List<string>;
+                
+                
+                if (items.Contains(item.ItemName))
                 {
                     FavorButton.Text = "Remove From Favorites";
                 }
@@ -82,9 +83,29 @@ namespace LaFinca.Views
 
         }
 
-        private void Button_Clicked_1(object sender, EventArgs e)
+        private async void Button_Clicked_1(object sender, EventArgs e)
         {
             //add to favors list
+            Button favorBtn = sender as Button;
+            string btnText = favorBtn.Text.ToLower();
+            UserRestService service = new UserRestService();
+            IUser currentUser = Application.Current.Properties["User"] as IUser;
+            List<string> favorites;
+            switch (btnText)
+            {
+                case "favorite":
+                    btnText = "Unfavorite";
+                    favorBtn.Text = btnText;
+                    favorites = await service.FavorItem(currentUser.username, _item.ItemName);
+                    break;
+                case "unfavorite":
+                    btnText = "Favorite";
+                    favorBtn.Text = btnText;
+                    favorites = await service.UnFavorItem(currentUser.username, _item.ItemName);
+                    break;
+                default:
+                    break;
+            }
             //use mysql to store local user data
         }
 
@@ -101,7 +122,7 @@ namespace LaFinca.Views
                     cart.Add(_item);
                     orderBtn.Text = "Remove";
                     break;
-                case "remove from order":
+                case "remove":
                     cart.Remove(_item);
                     orderBtn.Text = "Order";
                     break;

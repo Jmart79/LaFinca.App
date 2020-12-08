@@ -17,10 +17,10 @@ namespace LaFinca.Views
         public OrderViewModel viewModel { get; set; }
         public OrderDetailPage()
         {
+            InitializeComponent();
             viewModel = new OrderViewModel();
             this.BindingContext = viewModel.currentOrder;
             NavigationPage.SetHasNavigationBar(this, false);
-            InitializeComponent();
         }
 
         private void OrderItemsPicker_SelectedIndexChanged(object sender, EventArgs e)

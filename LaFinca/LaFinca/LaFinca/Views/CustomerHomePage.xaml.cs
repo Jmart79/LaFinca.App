@@ -42,9 +42,9 @@ namespace LaFinca.Views
                 menuPage = new NavigationPage(new MenuCategoryDetailPage());
                 menuPage.Title = "Menu";
                 settingsPage = new NavigationPage(new UpdateUserPage());
+                NavigationPage.SetHasNavigationBar(settingsPage, false);
                 settingsPage.Title = "Account Settings";                
                 settingsPage.BindingContext = Application.Current.Properties["User"] as IUser;
-                NavigationPage.SetHasNavigationBar(settingsPage, false);
                 Children.Add(orderPage);
                 Children.Add(menuPage);
                 Children.Add(settingsPage);

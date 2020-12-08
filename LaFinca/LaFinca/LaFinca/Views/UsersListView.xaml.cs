@@ -57,10 +57,21 @@ namespace LaFinca.Views
                 {
                     IUser selectedUser;
                     selectedUser = Users.FirstOrDefault(user => user.username == (s as Label).Text);
-
                     if(selectedUser != null && counter == 0)
                     {
-                        Navigation.PushAsync(new UpdateUserPage(selectedUser));
+
+                        UpdateUserPage updateUserPage = new UpdateUserPage(selectedUser);
+                        
+                        var page = (Page)Activator.CreateInstance(updateUserPage.GetType());
+                        page.Title = updateUserPage.Title;
+                        var parentOfParent = this.Parent.Parent.Parent;
+                        MasterDetailPage1 parentPage = (parentOfParent as MasterDetailPage1);
+                        NavigationPage detailPage = new NavigationPage(updateUserPage);
+                        detailPage.BarBackgroundColor = Color.FromHex("#7A2323");
+                        parentPage.Detail = detailPage;
+                        parentPage.IsPresented = false;                        
+
+                        //Navigation.PushAsync(new UpdateUserPage(selectedUser));
                         counter++;
                     }
                 };
