@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LaFinca.Models;
+using LaFinca.Services;
 using LaFinca.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,14 +14,13 @@ namespace LaFinca.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
-        IUser user;
-        private List<IUser> users;
+        private LoginViewModel _viewModel { get; set; }
         public LoginPage()
         {
-            users = Application.Current.Properties["Users"] as List<IUser>;
-            user = new IUser();
+            _viewModel = new LoginViewModel();
+            this.BindingContext = _viewModel;
             InitializeComponent();
-            this.BindingContext = user;
+
         }
 
         public LoginPage(List<IUser> users,List<Models.MenuItem> items)
@@ -28,22 +28,43 @@ namespace LaFinca.Views
 
         }
 
-        private async void LoginClicked(object sender, EventArgs e)
+        private void LoginClicked(object sender, EventArgs e)
         {
-            IUser foundUser = users.FirstOrDefault(child => child.username == user.username);
+            bool isLoginSuccessful = _viewModel.IsLoginSuccessful();
 
-            if(foundUser != null)
+            if (isLoginSuccessful) 
             {
-                if(foundUser.password == user.password)
+                Application.Current.Properties["User"] = _viewModel.user;
+                string role = _viewModel.user.role.ToLower();
+                switch (role)
                 {
-                    await Navigation.PushAsync(new DeleteUser());
+                    case "customer":
+                        Application.Current.MainPage = new CustomerHomePage(false);
+                        Application.Current.Properties["Cart"] = new List<Models.MenuItem>();
+                        UserRestService service = new UserRestService();
+
+                      //  List<string> favoritesList = await service.GetFavorites(_viewModel.user.username) ;
+                        Application.Current.Properties["Favorites"] = new List<string>();
+                        
+                        break;
+                    case "management":
+                       // Application.Current.MainPage = new NavigationPage(new MenuCategoryDetailPage());
+                        //assign main page to the ManagementDetailPage
+                        Application.Current.MainPage = new MasterDetailPage1();
+                        break;
+                    default:
+                        Application.Current.MainPage = new CustomerHomePage(false);
+                        break;
                 }
             }
-            else
-            {
+        
+        
+        
+        }
 
-            }
-
+        private void CancleClicked(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
         }
     }
 }

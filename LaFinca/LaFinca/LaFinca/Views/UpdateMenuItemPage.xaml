@@ -4,20 +4,46 @@
              x:Class="LaFinca.Views.UpdateMenuItemPage">
     <ContentPage.Content>
         <StackLayout>
-            <Entry x:Name="ItemToUpdate" Placeholder="Item Name" Completed="ItemToUpdate_Completed"/>
 
-            <Picker Title="Data to Update" x:Name="VariableToUpdatePicker" SelectedIndexChanged="Picker_SelectedIndexChanged">
-                <Picker.Items>
-                    <x:String>Category</x:String>
-                    <x:String>Description</x:String>
-                    <x:String>Cost</x:String>
-                    <x:String>IsAvailable</x:String>
-                    <x:String>IsHouseFavorite</x:String>
-                    <x:String>Item Name</x:String>
-                </Picker.Items>
-            </Picker>
+            <Frame Margin="0,50,0,0" BackgroundColor="#FF9494" CornerRadius="10" HorizontalOptions="Center" WidthRequest="250">
+                <StackLayout>
+                    <Entry x:Name="ItemToUpdate" Placeholder="Item Name" Completed="ItemToUpdate_Completed"/>
+                    <Label>Category</Label>
+                    <Picker SelectedItem="{Binding Category}" >
+                        <Picker.Items>
+                            <x:String>Family Brunch Platters</x:String>
+                            <x:String>Startes</x:String>
+                            <x:String>Pan</x:String>
+                            <x:String>Omelet</x:String>
+                            <x:String>Pancakes</x:String>
+                            <x:String>Chilaquiles</x:String>
+                            <x:String>French Toast</x:String>
+                            <x:String>Crepas</x:String>
+                            <x:String>Waffles</x:String>
+                            <x:String>New Bruncheria</x:String>
+                            <x:String>De La Granja</x:String>
+                            <x:String>Breakfast Tacos</x:String>
+                            <x:String>Lunch</x:String>
+                            <x:String>Light Options</x:String>
+                            <x:String>Drinks</x:String>
+                            <x:String>Espresso Bar</x:String>
+                            <x:String>Menudo y Barbacoa</x:String>
+                            <x:String>Desserts and Sweets</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <Entry Text="{Binding Cost}" Placeholder="Cost"/>
+                    <Entry Text="{Binding Description}" Placeholder="Description"/>
+                    <Label>Is House Favorite:</Label>
+                    <Switch VerticalOptions="Center" x:Name="IsHouseFavoriteSwitch1" HorizontalOptions="Center" >
+
+                    </Switch>
+
+                </StackLayout>
+            </Frame>
             
-            <Button Clicked="UpdateClicked" Text="Update"/>
+
+            <Button Margin="0,50,0,0" Clicked="UpdateClicked" Text="Update" WidthRequest="225" HorizontalOptions="Center"/>
+            <Button Clicked="Button_Clicked" x:Name="DeleteItemButton" Text="Delete" IsVisible="False" WidthRequest="225" HorizontalOptions="Center"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

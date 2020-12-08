@@ -34,8 +34,9 @@ namespace LaFinca.Views
         private async void RegisterClicked(object sender, EventArgs e)
         {
             IUser foundUser = users.FirstOrDefault(child => child.username == user.username);
-
-            if(foundUser == null)
+            string password = user.password;
+            bool isPasswordValid = password != null && password != "" && password.Trim() != "";
+            if(foundUser == null && isPasswordValid )
             {
                 UserRestService userService = new UserRestService();
                 Application.Current.Properties["Users"] = await userService.AddData(user);
@@ -48,6 +49,12 @@ namespace LaFinca.Views
                 
             }
 
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+
+            Navigation.PopAsync();
         }
     }
 }

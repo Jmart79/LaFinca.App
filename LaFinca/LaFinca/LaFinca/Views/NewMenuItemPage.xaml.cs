@@ -26,10 +26,10 @@ namespace LaFinca.Views
         private async void CreateClicked(object sender, EventArgs e)
         {
             List<Models.MenuItem> items = Application.Current.Properties["Items"] as List<Models.MenuItem>;
-            string isToggled = IsHouseFavoriteSwitch1.IsToggled.ToString().ToLower();
+            bool isToggled = IsHouseFavoriteSwitch1.IsToggled;
             ItemRestService service = new ItemRestService();
             Models.MenuItem foundItem = items.FirstOrDefault(child => child.ItemName == item.ItemName);
-            if (isToggled == "true")
+            if (isToggled)
             {
                 item.IsHouseFavorite = true;
             }
@@ -38,8 +38,26 @@ namespace LaFinca.Views
             {
                 Application.Current.Properties["Items"] = await service.AddData(item);
             }
+            MenuCategoryDetailPage categoryDetailPage = new MenuCategoryDetailPage();
 
-            await Navigation.PushAsync(new DeleteMenuItem());
+            var page = (Page)Activator.CreateInstance(categoryDetailPage.GetType());
+            page.Title = categoryDetailPage.Title;
+
+            var masterDetailParentPage = this.Parent.Parent;
+
+            MasterDetailPage1 parentPage = masterDetailParentPage as MasterDetailPage1;
+            NavigationPage detailPage = new NavigationPage(categoryDetailPage);
+            NavigationPage.SetHasNavigationBar(detailPage, true);
+
+            detailPage.BackgroundColor = Color.FromHex("#7A2323");
+            detailPage.BarBackgroundColor = Color.FromHex("#7A2323");
+            parentPage.Detail = detailPage;
+            parentPage.IsPresented = false;
+            
+
+
+
+           // await Navigation.PushAsync(new DeleteMenuItem());
         }
 
         

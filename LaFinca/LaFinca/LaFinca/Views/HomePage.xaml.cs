@@ -19,6 +19,7 @@ namespace LaFinca.Views
         public HomePage()
         {
             InitializeComponent();
+           
             
         }
 
@@ -29,12 +30,18 @@ namespace LaFinca.Views
 
         async void OnRegisterClicked(object sender, EventArgs e)
         {
+
             await Navigation.PushAsync(new RegisterPage());
         }
 
         async void OnContinueClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MenuPage());
+            NavigationPage temp = new NavigationPage();
+            IUser user    = new IUser();
+            Application.Current.Properties["User"] = user;
+            await Navigation.PushAsync(new CustomerHomePage(true));
+           // await Navigation.PushAsync(new ViewUsersPage());
+           // await Navigation.PushAsync(new MasterDetailPage1Master());
         }
     }
 }
