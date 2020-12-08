@@ -140,6 +140,22 @@ namespace LaFinca.Views
             List<Models.MenuItem> items = Application.Current.Properties["Items"] as List<Models.MenuItem>;
             items.Remove(_item);
             Application.Current.Properties["Items"] = items;
+
+            //MenuCategoryDetailPage categoryDetailPage = new MenuCategoryDetailPage();
+
+           // var page = (Page)Activator.CreateInstance(categoryDetailPage.GetType());
+            //page.Title = categoryDetailPage.Title;
+
+            //var masterDetailParentPage = this.Parent.Parent.Parent.Parent.Parent.Parent.Parent;
+
+            //MasterDetailPage1 parentPage = masterDetailParentPage as MasterDetailPage1;
+            //NavigationPage detailPage = new NavigationPage(categoryDetailPage);
+            //NavigationPage.SetHasNavigationBar(detailPage, true);
+
+            //detailPage.BackgroundColor = Color.FromHex("#7A2323");
+            //detailPage.BarBackgroundColor = Color.FromHex("#7A2323");
+            //parentPage.Detail = detailPage;
+            //parentPage.IsPresented = false; 
         }
     }
 }
