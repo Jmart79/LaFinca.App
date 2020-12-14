@@ -60,6 +60,7 @@ namespace LaFinca.Views
                     new MasterDetailPage1MasterMenuItem { Id = 3, Title = "Menu",TargetType=typeof(MenuCategoryDetailPage) },
                     new MasterDetailPage1MasterMenuItem { Id = 4, Title = "Add Item",TargetType=typeof(NewMenuItemPage) },
                     new MasterDetailPage1MasterMenuItem { Id = 5, Title = "Update Item",TargetType=typeof(UpdateMenuItemPage) },
+                    new MasterDetailPage1MasterMenuItem { Id = 6, Title = "Add User",TargetType=typeof(NewUserPage) },
                 });
             }
 

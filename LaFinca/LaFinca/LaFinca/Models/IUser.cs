@@ -26,9 +26,13 @@ namespace LaFinca.Models
         [BsonElement("password")]
         [JsonProperty("password")]
         public string password { get; set; }
-        [BsonElement("usernroleame")]
+        [BsonElement("role")]
         [JsonProperty("role")]
         public string role { get; set; } = "customer";
+
+        [BsonElement("favoritesArray")]
+        [JsonProperty("favoritesArray")]
+        public string[] favoritesArray { get; set; }
 
         public IUser()
         {
@@ -44,5 +48,6 @@ namespace LaFinca.Models
             this.password = password;
             this.role = "customer";
         }
+
     }
 }

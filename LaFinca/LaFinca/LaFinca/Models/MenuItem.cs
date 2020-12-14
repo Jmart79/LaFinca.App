@@ -33,7 +33,7 @@ namespace LaFinca.Models
             this.IsAvailable = available;
             this.IsHouseFavorite = houseFavorite;
 
-            //this.Description += $" {Cost}";
+            this.Description += $" {Cost}";
         }
     }
 }

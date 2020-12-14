@@ -30,6 +30,7 @@ namespace LaFinca.Views
             if (currentUser.role.ToLower() == "management")
             {
                 this.DeleteButton.IsVisible = true;
+                this.FavorButton.IsVisible = false;
             }
         }
         public CategoryDisplayView(Models.MenuItem item)
@@ -79,6 +80,7 @@ namespace LaFinca.Views
             if (currentUser.role.ToLower() == "management")
             {
                 this.DeleteButton.IsVisible = true;
+                this.FavorButton.IsVisible = false;
             }
 
         }

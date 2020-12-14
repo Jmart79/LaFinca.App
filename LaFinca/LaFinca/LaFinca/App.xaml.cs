@@ -33,10 +33,6 @@ namespace LaFinca
             List<IUser> usersTemp = await userservice.RefreshData();
             List<Models.MenuItem> itemsTemp = await itemService.RefreshData();
 
-            foreach(Models.MenuItem item in itemsTemp)
-            {
-                item.Description += $" {item.Cost}";
-            }
 
             Application.Current.Properties["Users"] = usersTemp;
             Application.Current.Properties["Items"] = itemsTemp;
