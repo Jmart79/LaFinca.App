@@ -23,7 +23,7 @@ namespace LaFinca.Views
             this._viewModel = new MenuCategoryViewModel();
             this._item = _viewModel.GetNextItem();
             //this._item.Description += $" {_item.Cost}";
-            this.BindingContext = _item;
+            this.BindingContext = _viewModel;
             InitializeComponent();
 
             IUser currentUser = Application.Current.Properties["User"] as IUser;
@@ -37,7 +37,7 @@ namespace LaFinca.Views
         {
             this._item = item;
            // this._item.Description += $" {_item.Cost}";
-            this.BindingContext = _item;
+            this.BindingContext = _viewModel;
             InitializeComponent();
             if (Application.Current.Properties.ContainsKey("Cart"))
             {

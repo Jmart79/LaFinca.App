@@ -1,9 +1,12 @@
-﻿using LaFinca.Views;
+﻿using LaFinca.Models;
+using LaFinca.Services;
+using LaFinca.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Xamarin.Forms;
+using System.Windows.Input;
+using Xamarin.Forms; 
 
 namespace LaFinca.ViewModels
 {
@@ -12,13 +15,23 @@ namespace LaFinca.ViewModels
         public string category { get; set; }
         public CategoryDisplayView CurrentItem { get; set; }
         public List<Models.MenuItem> CategoryItems { get; set; }
+        public Models.MenuItem CurrentMenuItem { get; set; }
         private int _itemIndex { get; set; }
+        public string MenuItemName { get; set; }
+        public string MenuItemDescription { get; set; }
+        public string FavorButtonText { get; set; }
+        public string OrderButtonText { get; set; }
+        public ICommand FavorItemCommand { get; private set; }
 
         public MenuCategoryViewModel()
         {
             this.category = "New Bruncherias";
             this.CategoryItems = GetItems();
             this._itemIndex = 0;
+            CurrentMenuItem = CategoryItems.ElementAt(_itemIndex);
+            MenuItemName = CurrentMenuItem.ItemName;
+            MenuItemDescription = CurrentMenuItem.Description;
+            FavorItemCommand = new Command(FavorItem,IsFavoredButtonEnabled);
             GenerateCategoryDisplayView(CategoryItems.ElementAt(_itemIndex));
         }
         public MenuCategoryViewModel(string Category)
@@ -26,6 +39,9 @@ namespace LaFinca.ViewModels
             this.category = Category;
             this.CategoryItems = GetItems();
             this._itemIndex = 0;
+            CurrentMenuItem = CategoryItems.ElementAt(_itemIndex);
+            MenuItemName = CurrentMenuItem.ItemName;
+            MenuItemDescription = CurrentMenuItem.Description;
             GenerateCategoryDisplayView(CategoryItems.ElementAt(_itemIndex));
         }
 
@@ -95,10 +111,32 @@ namespace LaFinca.ViewModels
             return null;
         }
 
-        public Command FavorItem()
+        public bool IsDeleteButtonEnabled(object sender)
         {
-            return null;
+            IUser user = Application.Current.Properties["User"] as IUser;
+
+            bool isManagement =  user.role.ToLower() == "management";
+            return isManagement;
         }
+
+        public bool IsFavoredButtonEnabled()
+        {
+            IUser user = Application.Current.Properties["User"] as IUser;
+
+            bool isCustomer =  user.role.ToLower() == "customer";
+            return isCustomer;
+        }
+
+        void FavorItem()
+        {
+
+        }
+
+        void UnFavorItem()
+        {
+
+        }
+   
 
         public Command OrderItem()
         {
