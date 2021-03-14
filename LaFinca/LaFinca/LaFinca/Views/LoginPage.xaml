@@ -15,7 +15,6 @@
                     <Label x:Name="AuthenticationLabel" Text="{Binding authenticationMessage}"></Label>
                     <Entry Placeholder="Username" x:Name="UsernameLoginEntry" Text="{Binding username}" HorizontalOptions="Center" WidthRequest="250"/>
                     <Entry Placeholder="Password" x:Name="PasswordLoginEntry" Text="{Binding password}" IsPassword="true" HorizontalOptions="Center" WidthRequest="250"/>
-
                 </StackLayout>
             </Frame>
             
